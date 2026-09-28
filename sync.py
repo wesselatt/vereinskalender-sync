@@ -131,7 +131,9 @@ def query_eq(collection,field,value):
         if 'document' in x:
             q=x['document'];z={k:val(v) for k,v in q.get('fields',{}).items()};z['id']=q['name'].rsplit('/',1)[-1];out.append(z)
     return out
-def icsesc(s):return str(s or '').replace('\','\\').replace('\n','\\n').replace(',','\,').replace(';','\;')
+def icsesc(s):
+    b=chr(92)
+    return str(s or '').replace(b,b+b).replace(chr(10),b+'n').replace(',',b+',').replace(';',b+';')
 def icstamp(d,t=''):
     d=str(d or '').replace('-','');tt=str(t or '').replace(':','');return d+'T'+(tt+'000000')[:6] if t else d
 def write_calendar(cal,items):
