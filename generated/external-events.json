@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-28T14:53:07.041539+00:00",
+  "generatedAt": "2026-09-28T16:49:44.301458+00:00",
   "events": [
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-6e04ede3-2bc2-4126-b6ea-2c26e9e18a42",
-      "externalUid": "6e04ede3-2bc2-4126-b6ea-2c26e9e18a42",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-077496c3-8f4b-4681-a405-34ce8485f15f",
+      "externalUid": "077496c3-8f4b-4681-a405-34ce8485f15f",
       "title": "TSV Aue-Wingeshausen III vs TSV Aue-Wingeshausen IV",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -17,8 +17,8 @@
       "external": true
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-7794368c-9160-4efc-919b-0cfda8cd7ec0",
-      "externalUid": "7794368c-9160-4efc-919b-0cfda8cd7ec0",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-994d42e7-1048-43fd-9a5f-5319f0b4ad6e",
+      "externalUid": "994d42e7-1048-43fd-9a5f-5319f0b4ad6e",
       "title": "TSV Aue-Wingeshausen III vs VfL Bad Berleburg",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -32,8 +32,8 @@
       "external": true
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-4822bf77-d2a5-4e41-b6cc-b924002c39ac",
-      "externalUid": "4822bf77-d2a5-4e41-b6cc-b924002c39ac",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-6c247558-a795-45ca-8e6a-012d6bc16920",
+      "externalUid": "6c247558-a795-45ca-8e6a-012d6bc16920",
       "title": "FGF Saalhausen II vs TSV Aue-Wingeshausen III",
       "description": "Vorrunde",
       "location": "Kur - und Bürgerhaus, Fasanenweg 3, 57368  Lennestadt-Saalhausen, Deutschland",
@@ -47,8 +47,8 @@
       "external": true
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-49e5a7bc-7d6c-4fc7-a174-558c3d32c198",
-      "externalUid": "49e5a7bc-7d6c-4fc7-a174-558c3d32c198",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-ce96e54b-afd1-4150-bfd5-4f1dd8290f31",
+      "externalUid": "ce96e54b-afd1-4150-bfd5-4f1dd8290f31",
       "title": "TuS Deuz III vs TSV Aue-Wingeshausen III",
       "description": "Vorrunde",
       "location": "Alte Turnhalle Deuz,  Nauholzerweg, 57250 Netphen -Deuz, Deutschland",
@@ -62,8 +62,8 @@
       "external": true
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-6607b4f1-878f-4046-88eb-b35928b01415",
-      "externalUid": "6607b4f1-878f-4046-88eb-b35928b01415",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-a7bfc1fd-9942-4229-8ef3-4e679efbbe58",
+      "externalUid": "a7bfc1fd-9942-4229-8ef3-4e679efbbe58",
       "title": "TSV Aue-Wingeshausen III vs TSG Helberhausen III",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -77,8 +77,8 @@
       "external": true
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-c52688bb-6613-4abf-ab8f-1578c134fe83",
-      "externalUid": "c52688bb-6613-4abf-ab8f-1578c134fe83",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-0cdc8584-a62d-4e01-bbe8-4d634ab58c7c",
+      "externalUid": "0cdc8584-a62d-4e01-bbe8-4d634ab58c7c",
       "title": "TSV Aue-Wingeshausen III vs TTG Netphen V",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -92,8 +92,8 @@
       "external": true
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-855d5093-e73e-42e1-965e-f36ce2c784fd",
-      "externalUid": "855d5093-e73e-42e1-965e-f36ce2c784fd",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-0fc6728b-a8d7-48a1-9b95-40373e7642fa",
+      "externalUid": "0fc6728b-a8d7-48a1-9b95-40373e7642fa",
       "title": "TTC Feudingen II vs TSV Aue-Wingeshausen III",
       "description": "Vorrunde",
       "location": "Schulzentrum Feudingen, Tannenwald 9, 57334 Bad Laasphe-Feudingen, Deutschland",
@@ -107,8 +107,8 @@
       "external": true
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-a3b590a3-4d8c-45a7-a1e1-f75676126e41",
-      "externalUid": "a3b590a3-4d8c-45a7-a1e1-f75676126e41",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-d87d88cd-6958-4d38-a2d3-6e0066bda91d",
+      "externalUid": "d87d88cd-6958-4d38-a2d3-6e0066bda91d",
       "title": "TuS Hilchenbach IV vs TSV Aue-Wingeshausen III",
       "description": "Vorrunde",
       "location": "Grundschule, Jung-Stilling-Allee 10, 57271 Hilchenbach, Deutschland",
@@ -122,8 +122,8 @@
       "external": true
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-bf943bfb-7c5a-4d53-922f-8444370f8119",
-      "externalUid": "bf943bfb-7c5a-4d53-922f-8444370f8119",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-c3aeb102-2f94-4728-a76a-a3c5421b75e3",
+      "externalUid": "c3aeb102-2f94-4728-a76a-a3c5421b75e3",
       "title": "TSV Aue-Wingeshausen IV vs TSV Aue-Wingeshausen III",
       "description": "Rückrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -137,8 +137,8 @@
       "external": true
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-2ecb587d-315d-40d4-a850-be28d6728fdf",
-      "externalUid": "2ecb587d-315d-40d4-a850-be28d6728fdf",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-e1479f17-14e9-443f-b46f-d754abedb1bc",
+      "externalUid": "e1479f17-14e9-443f-b46f-d754abedb1bc",
       "title": "VfL Bad Berleburg vs TSV Aue-Wingeshausen III",
       "description": "Rückrunde",
       "location": "Burgfeldturnhalle, Eichenweg, 57319 Bad Berleburg, Deutschland",
@@ -152,8 +152,8 @@
       "external": true
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-045ca929-f576-4fd2-88d9-5aa01b3eb321",
-      "externalUid": "045ca929-f576-4fd2-88d9-5aa01b3eb321",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-f477828d-f930-4a18-a244-3ebe7cf99f67",
+      "externalUid": "f477828d-f930-4a18-a244-3ebe7cf99f67",
       "title": "TSV Aue-Wingeshausen III vs FGF Saalhausen II",
       "description": "Rückrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -167,8 +167,8 @@
       "external": true
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-f8975d0e-6df5-42e3-97ed-4bb7124f183e",
-      "externalUid": "f8975d0e-6df5-42e3-97ed-4bb7124f183e",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-f216f58c-d8fa-489c-b48c-718b60a73610",
+      "externalUid": "f216f58c-d8fa-489c-b48c-718b60a73610",
       "title": "TSG Helberhausen III vs TSV Aue-Wingeshausen III",
       "description": "Rückrunde",
       "location": "Turnhalle Helberhausen, Jahnstraße, 57271 Hilchenbach-Helberhausen, Deutschland",
@@ -182,8 +182,8 @@
       "external": true
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-c60adf37-6c45-414c-bef4-058b7c0ac844",
-      "externalUid": "c60adf37-6c45-414c-bef4-058b7c0ac844",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-ba0ba91e-1e96-480b-8b40-5c0177eb8df8",
+      "externalUid": "ba0ba91e-1e96-480b-8b40-5c0177eb8df8",
       "title": "TSV Aue-Wingeshausen III vs TuS Deuz III",
       "description": "Rückrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -197,8 +197,8 @@
       "external": true
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-4f71f7c1-43fa-472e-908c-e8674705fd35",
-      "externalUid": "4f71f7c1-43fa-472e-908c-e8674705fd35",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-1abcc4e5-ca45-4b32-8b31-9088628717d7",
+      "externalUid": "1abcc4e5-ca45-4b32-8b31-9088628717d7",
       "title": "TTG Netphen V vs TSV Aue-Wingeshausen III",
       "description": "Rückrunde",
       "location": "Grundschule Obernetphen, An der Obernau 20, 57250 Netphen, Deutschland",
@@ -212,8 +212,8 @@
       "external": true
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-6ee507bb-aa73-424f-a7ac-21d2c02ce7ee",
-      "externalUid": "6ee507bb-aa73-424f-a7ac-21d2c02ce7ee",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-5b4839a0-69dc-4123-b5c4-b318304f5250",
+      "externalUid": "5b4839a0-69dc-4123-b5c4-b318304f5250",
       "title": "TSV Aue-Wingeshausen III vs TTC Feudingen II",
       "description": "Rückrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -227,8 +227,8 @@
       "external": true
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-5a81352e-fef2-493c-af65-2b70487d2216",
-      "externalUid": "5a81352e-fef2-493c-af65-2b70487d2216",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-07f3b063-1fc0-4146-9931-f640e1f170ca",
+      "externalUid": "07f3b063-1fc0-4146-9931-f640e1f170ca",
       "title": "TSV Aue-Wingeshausen III vs TuS Hilchenbach IV",
       "description": "Rückrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -242,8 +242,8 @@
       "external": true
     },
     {
-      "id": "ext-bPnIGG4pYHcyBVY3MVmO-97455771-4f93-4f24-b3db-34c6e3f8f7e0",
-      "externalUid": "97455771-4f93-4f24-b3db-34c6e3f8f7e0",
+      "id": "ext-bPnIGG4pYHcyBVY3MVmO-03c37b90-eadb-4df7-bcf7-51aad67e7680",
+      "externalUid": "03c37b90-eadb-4df7-bcf7-51aad67e7680",
       "title": "VfB Burbach vs TSV Aue-Wingeshausen",
       "description": "Vorrunde",
       "location": "Alter Garten, Marktplatz / Einkaufszentrum, 57299 Burbach, Deutschland",
@@ -257,8 +257,8 @@
       "external": true
     },
     {
-      "id": "ext-bPnIGG4pYHcyBVY3MVmO-fab0089a-5983-424b-9851-a9b83f456a19",
-      "externalUid": "fab0089a-5983-424b-9851-a9b83f456a19",
+      "id": "ext-bPnIGG4pYHcyBVY3MVmO-e900518c-fff7-4c57-8aa4-ba573874943a",
+      "externalUid": "e900518c-fff7-4c57-8aa4-ba573874943a",
       "title": "TSV Aue-Wingeshausen vs DJK TuS 02 Siegen",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -272,8 +272,8 @@
       "external": true
     },
     {
-      "id": "ext-bPnIGG4pYHcyBVY3MVmO-c8333953-0db5-4949-8be7-8e283aa85680",
-      "externalUid": "c8333953-0db5-4949-8be7-8e283aa85680",
+      "id": "ext-bPnIGG4pYHcyBVY3MVmO-3c5fae3e-079d-47f9-9883-bdcad6d7a88e",
+      "externalUid": "3c5fae3e-079d-47f9-9883-bdcad6d7a88e",
       "title": "TTC Wenden vs TSV Aue-Wingeshausen",
       "description": "Vorrunde",
       "location": "Konrad-Adenauer-Schule, Peter-Dassis-Ring 47, 57482 Wenden, Deutschland",
@@ -287,8 +287,8 @@
       "external": true
     },
     {
-      "id": "ext-bPnIGG4pYHcyBVY3MVmO-95a615d0-da5d-42e8-b2b6-6ff77de821ff",
-      "externalUid": "95a615d0-da5d-42e8-b2b6-6ff77de821ff",
+      "id": "ext-bPnIGG4pYHcyBVY3MVmO-9ae50d1e-787c-4673-9d2a-9994df3986ae",
+      "externalUid": "9ae50d1e-787c-4673-9d2a-9994df3986ae",
       "title": "TSV Aue-Wingeshausen vs TTG Netphen",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -302,8 +302,8 @@
       "external": true
     },
     {
-      "id": "ext-bPnIGG4pYHcyBVY3MVmO-42f32d31-355d-4fb1-bceb-67e27760b01b",
-      "externalUid": "42f32d31-355d-4fb1-bceb-67e27760b01b",
+      "id": "ext-bPnIGG4pYHcyBVY3MVmO-deea8b21-79bf-45d9-a8b0-2947f691945a",
+      "externalUid": "deea8b21-79bf-45d9-a8b0-2947f691945a",
       "title": "TSV Aue-Wingeshausen vs TSG Adler Dielfen",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -317,8 +317,8 @@
       "external": true
     },
     {
-      "id": "ext-bPnIGG4pYHcyBVY3MVmO-66553516-0a42-42a2-8f3a-a09cf4b8c954",
-      "externalUid": "66553516-0a42-42a2-8f3a-a09cf4b8c954",
+      "id": "ext-bPnIGG4pYHcyBVY3MVmO-a98875eb-cbb7-45ab-b129-99a75072b078",
+      "externalUid": "a98875eb-cbb7-45ab-b129-99a75072b078",
       "title": "TuS Ferndorf  vs TSV Aue-Wingeshausen",
       "description": "Vorrunde",
       "location": "Sportzentrum Kreuztal Zweifachhalle F, Am Park, 57223 Kreuztal, Deutschland",
@@ -332,8 +332,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-513cd89f-f599-41d6-b43a-ac9427170869",
-      "externalUid": "513cd89f-f599-41d6-b43a-ac9427170869",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-71f44965-ab0c-45a9-890e-29ec9cd4d717",
+      "externalUid": "71f44965-ab0c-45a9-890e-29ec9cd4d717",
       "title": "SV Germania Salchendorf IV vs TSV Aue-Wingeshausen II",
       "description": "Vorrunde",
       "location": "Johannlandhalle, Schulstraße, 57250 Netphen-Salchendorf, Deutschland",
@@ -347,8 +347,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-7fbf404f-320c-4f1e-a427-871bcdc188d4",
-      "externalUid": "7fbf404f-320c-4f1e-a427-871bcdc188d4",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-201d7137-eaac-432c-8538-35090609faa9",
+      "externalUid": "201d7137-eaac-432c-8538-35090609faa9",
       "title": "TSV Aue-Wingeshausen II vs TSG Helberhausen II",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -362,8 +362,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-1353c421-78b4-48f1-b160-968e44cb35af",
-      "externalUid": "1353c421-78b4-48f1-b160-968e44cb35af",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-11e236b7-ee59-4987-9a57-c1348e2ba193",
+      "externalUid": "11e236b7-ee59-4987-9a57-c1348e2ba193",
       "title": "SV Germania Salchendorf III vs TSV Aue-Wingeshausen II",
       "description": "Vorrunde",
       "location": "Johannlandhalle, Schulstraße, 57250 Netphen-Salchendorf, Deutschland",
@@ -377,8 +377,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-a5ac3aa6-357e-49d5-86e5-06e38c9b627c",
-      "externalUid": "a5ac3aa6-357e-49d5-86e5-06e38c9b627c",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-d44dd176-800e-4e63-bf7b-98cc5796e8b9",
+      "externalUid": "d44dd176-800e-4e63-bf7b-98cc5796e8b9",
       "title": "TSV Aue-Wingeshausen II vs TuS Erndtebrück II",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -392,8 +392,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-85573487-e46c-46d3-ac8b-cbe5a8f8e4c0",
-      "externalUid": "85573487-e46c-46d3-ac8b-cbe5a8f8e4c0",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-081f420a-6a91-427d-9e59-86d9dda4a585",
+      "externalUid": "081f420a-6a91-427d-9e59-86d9dda4a585",
       "title": "TTC Feudingen vs TSV Aue-Wingeshausen II",
       "description": "Vorrunde",
       "location": "Schulzentrum Feudingen, Tannenwald 9, 57334 Bad Laasphe-Feudingen, Deutschland",
@@ -407,8 +407,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-dac174b0-09d0-419d-8b12-c1faf85073cb",
-      "externalUid": "dac174b0-09d0-419d-8b12-c1faf85073cb",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-41feab0c-9459-4faf-8ffc-837d5eb7deac",
+      "externalUid": "41feab0c-9459-4faf-8ffc-837d5eb7deac",
       "title": "TSV Aue-Wingeshausen II vs TV Arfeld II",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -422,8 +422,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-736a9c0c-445b-4a9c-8fca-1355467dc1ac",
-      "externalUid": "736a9c0c-445b-4a9c-8fca-1355467dc1ac",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-ca401d16-3109-45c3-8ceb-d7dcc657a322",
+      "externalUid": "ca401d16-3109-45c3-8ceb-d7dcc657a322",
       "title": "TSV Aue-Wingeshausen II vs FGF Saalhausen",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -437,8 +437,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-7fdfdd8d-37a5-4639-90f9-d979d89e2e0f",
-      "externalUid": "7fdfdd8d-37a5-4639-90f9-d979d89e2e0f",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-215ac488-71e2-4604-ace2-9422b062a99e",
+      "externalUid": "215ac488-71e2-4604-ace2-9422b062a99e",
       "title": "TuS Erndtebrück III vs TSV Aue-Wingeshausen II",
       "description": "Vorrunde",
       "location": "Pulverwaldturnhalle, Jahnstraße 6, 57339 Erndtebrück, Deutschland",
@@ -452,8 +452,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-efd09ba0-e706-41aa-92cc-f9354eb18d70",
-      "externalUid": "efd09ba0-e706-41aa-92cc-f9354eb18d70",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-6bba7433-0c7f-42ab-8e6e-756c70f4a3f3",
+      "externalUid": "6bba7433-0c7f-42ab-8e6e-756c70f4a3f3",
       "title": "TSV Aue-Wingeshausen II vs TV Laasphe",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -467,8 +467,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-f57b2908-bbcf-4c83-8126-5c87a4a834f0",
-      "externalUid": "f57b2908-bbcf-4c83-8126-5c87a4a834f0",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-ecf083e2-718d-4587-b19f-e926187f6be4",
+      "externalUid": "ecf083e2-718d-4587-b19f-e926187f6be4",
       "title": "TSV Aue-Wingeshausen II vs SV Germania Salchendorf IV",
       "description": "Rückrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -482,8 +482,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-9a257691-441a-4f77-a566-63511f3a6c1a",
-      "externalUid": "9a257691-441a-4f77-a566-63511f3a6c1a",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-20a3ddc6-448f-4196-9ba6-ba55d0162cdf",
+      "externalUid": "20a3ddc6-448f-4196-9ba6-ba55d0162cdf",
       "title": "TSV Aue-Wingeshausen II vs SV Germania Salchendorf III",
       "description": "Rückrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -497,8 +497,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-fe34440a-af20-479f-97f8-9068251b59b6",
-      "externalUid": "fe34440a-af20-479f-97f8-9068251b59b6",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-af7816bd-29ae-4bd1-ac2f-c7d3961ee33f",
+      "externalUid": "af7816bd-29ae-4bd1-ac2f-c7d3961ee33f",
       "title": "TSG Helberhausen II vs TSV Aue-Wingeshausen II",
       "description": "Rückrunde",
       "location": "Turnhalle Helberhausen, Jahnstraße, 57271 Hilchenbach-Helberhausen, Deutschland",
@@ -512,8 +512,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-5893c09b-af61-4ac2-8561-cf3fb019c743",
-      "externalUid": "5893c09b-af61-4ac2-8561-cf3fb019c743",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-f381ad85-87ad-46d2-86c0-d4f3145e65b9",
+      "externalUid": "f381ad85-87ad-46d2-86c0-d4f3145e65b9",
       "title": "TuS Erndtebrück II vs TSV Aue-Wingeshausen II",
       "description": "Rückrunde",
       "location": "Pulverwaldturnhalle, Jahnstraße 6, 57339 Erndtebrück, Deutschland",
@@ -527,8 +527,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-aefd17b7-0165-4a64-b493-173ad89676ad",
-      "externalUid": "aefd17b7-0165-4a64-b493-173ad89676ad",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-3c53e944-883f-4a69-93f0-53090958d8b5",
+      "externalUid": "3c53e944-883f-4a69-93f0-53090958d8b5",
       "title": "TSV Aue-Wingeshausen II vs TTC Feudingen",
       "description": "Rückrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -542,8 +542,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-19313aaa-0641-4807-a773-a90413284b24",
-      "externalUid": "19313aaa-0641-4807-a773-a90413284b24",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-e14d320b-19d4-45de-a618-a99b1cbf5f58",
+      "externalUid": "e14d320b-19d4-45de-a618-a99b1cbf5f58",
       "title": "TV Arfeld II vs TSV Aue-Wingeshausen II",
       "description": "Rückrunde",
       "location": "Schulzentrum Feudingen, Tannenwald 9, 57334 Bad Laasphe, Deutschland",
@@ -557,8 +557,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-f3b3e29d-a143-4f6a-9ca7-5616deec3139",
-      "externalUid": "f3b3e29d-a143-4f6a-9ca7-5616deec3139",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-bc2127e6-026b-42b3-9525-44ce13c8387b",
+      "externalUid": "bc2127e6-026b-42b3-9525-44ce13c8387b",
       "title": "FGF Saalhausen vs TSV Aue-Wingeshausen II",
       "description": "Rückrunde",
       "location": "Kur - und Bürgerhaus, Fasanenweg 3, 57368  Lennestadt-Saalhausen, Deutschland",
@@ -572,8 +572,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-4da84108-dfab-4f4a-891c-981a4a34e1fe",
-      "externalUid": "4da84108-dfab-4f4a-891c-981a4a34e1fe",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-d83745c5-3858-4b63-a732-1bbc8cfb9fc5",
+      "externalUid": "d83745c5-3858-4b63-a732-1bbc8cfb9fc5",
       "title": "TSV Aue-Wingeshausen II vs TuS Erndtebrück III",
       "description": "Rückrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -587,8 +587,8 @@
       "external": true
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-2e866e34-3cf4-4eb0-b13d-71ae113c00b5",
-      "externalUid": "2e866e34-3cf4-4eb0-b13d-71ae113c00b5",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-9ec7851d-6d2d-4ef1-bb66-c853f29fa285",
+      "externalUid": "9ec7851d-6d2d-4ef1-bb66-c853f29fa285",
       "title": "TV Laasphe vs TSV Aue-Wingeshausen II",
       "description": "Rückrunde",
       "location": "Turnhalle Gymnasium, Kurstr., 57334  Bad Laasphe, Deutschland",
@@ -602,8 +602,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-509bbf76-a878-4108-8100-e8025ba3aa8a",
-      "externalUid": "509bbf76-a878-4108-8100-e8025ba3aa8a",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-3155af3a-7f78-4b8e-8fc6-67652d65834c",
+      "externalUid": "3155af3a-7f78-4b8e-8fc6-67652d65834c",
       "title": "SV Germania Salchendorf II vs TSV Aue-Wingeshausen",
       "description": "Vorrunde",
       "location": "Johannlandhalle, Schulstraße, 57250 Netphen-Salchendorf, Deutschland",
@@ -617,8 +617,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-79c7e1e1-ff97-461d-87ea-ac509eb1cbd9",
-      "externalUid": "79c7e1e1-ff97-461d-87ea-ac509eb1cbd9",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-0fabb6eb-281e-457e-afd2-908053ae546f",
+      "externalUid": "0fabb6eb-281e-457e-afd2-908053ae546f",
       "title": "TSV Aue-Wingeshausen vs SuS Niederschelden",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -632,8 +632,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-d8f7a45a-444c-4b6d-882f-3d754d1f4ec3",
-      "externalUid": "d8f7a45a-444c-4b6d-882f-3d754d1f4ec3",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-c55b4572-408e-47f7-9aea-78ba4605950e",
+      "externalUid": "c55b4572-408e-47f7-9aea-78ba4605950e",
       "title": "TSV Aue-Wingeshausen vs TuS Erndtebrück",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -647,8 +647,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-24205303-695d-4f02-9a76-d9594003744c",
-      "externalUid": "24205303-695d-4f02-9a76-d9594003744c",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-97f53ba5-3667-4ced-b7c6-98f31ca495f7",
+      "externalUid": "97f53ba5-3667-4ced-b7c6-98f31ca495f7",
       "title": "TuS Deuz vs TSV Aue-Wingeshausen",
       "description": "Vorrunde",
       "location": "Alte Turnhalle Deuz,  Nauholzerweg, 57250 Netphen -Deuz, Deutschland",
@@ -662,8 +662,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-998c7afa-daf0-4a6f-86ad-609ccce01f39",
-      "externalUid": "998c7afa-daf0-4a6f-86ad-609ccce01f39",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-e8a571bd-0a50-4975-a7c6-9349c7fa5148",
+      "externalUid": "e8a571bd-0a50-4975-a7c6-9349c7fa5148",
       "title": "TSV Aue-Wingeshausen vs TuS Johannland",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -677,8 +677,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-6fa49e49-7916-43e3-aad9-db51c914f4a3",
-      "externalUid": "6fa49e49-7916-43e3-aad9-db51c914f4a3",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-e1f7eaca-8134-4451-b070-a2687a59d8a0",
+      "externalUid": "e1f7eaca-8134-4451-b070-a2687a59d8a0",
       "title": "Spvg. Rinsdorf II vs TSV Aue-Wingeshausen",
       "description": "Vorrunde",
       "location": "Turnhalle Rinsdorf, Vogelsang 1 (beim Bürgerhaus), 57234 Wilnsdorf-Rinsdorf, Deutschland",
@@ -692,8 +692,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-4acfb53a-fced-42d2-800b-0b5c8a263ce9",
-      "externalUid": "4acfb53a-fced-42d2-800b-0b5c8a263ce9",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-211fbd36-cc82-4025-b922-227b05dd3816",
+      "externalUid": "211fbd36-cc82-4025-b922-227b05dd3816",
       "title": "TSV Aue-Wingeshausen vs TSG Helberhausen",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -707,8 +707,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-709a9994-26b5-44bd-807b-f15bea974e71",
-      "externalUid": "709a9994-26b5-44bd-807b-f15bea974e71",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-22d20dd3-fadc-45b6-b3e5-ce157426e814",
+      "externalUid": "22d20dd3-fadc-45b6-b3e5-ce157426e814",
       "title": "TV Arfeld vs TSV Aue-Wingeshausen",
       "description": "Vorrunde",
       "location": "Turnhalle Gymnasium, Kurstr., 57334 Bad Laasphe, Deutschland",
@@ -722,8 +722,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-f6a0f928-871d-4c9f-8489-029e062c0504",
-      "externalUid": "f6a0f928-871d-4c9f-8489-029e062c0504",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-087dc1f8-bf1f-494a-ad5b-7264bb45286a",
+      "externalUid": "087dc1f8-bf1f-494a-ad5b-7264bb45286a",
       "title": "TSV Aue-Wingeshausen vs Eiserfelder TV",
       "description": "Vorrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -737,8 +737,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-19cef218-176a-42cb-9324-24b3719b8d07",
-      "externalUid": "19cef218-176a-42cb-9324-24b3719b8d07",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-dbe685ca-cbf3-4c78-af22-095f5bf4fabd",
+      "externalUid": "dbe685ca-cbf3-4c78-af22-095f5bf4fabd",
       "title": "TSV Aue-Wingeshausen vs SV Germania Salchendorf II",
       "description": "Rückrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -752,8 +752,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-a45a4b98-8c9f-447c-bf04-46abcdc4e449",
-      "externalUid": "a45a4b98-8c9f-447c-bf04-46abcdc4e449",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-acfe8646-3503-4144-b49d-cc638d36d38b",
+      "externalUid": "acfe8646-3503-4144-b49d-cc638d36d38b",
       "title": "SuS Niederschelden vs TSV Aue-Wingeshausen",
       "description": "Rückrunde",
       "location": "Rundturnhalle Niederschelden, Höllenwaldstraße 99, 57080 Siegen, Deutschland",
@@ -767,8 +767,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-3464dc60-1f8a-4cba-ae9b-1846924bd9c3",
-      "externalUid": "3464dc60-1f8a-4cba-ae9b-1846924bd9c3",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-eb70c9ac-b1ac-4be6-85cf-1a92f14b14fa",
+      "externalUid": "eb70c9ac-b1ac-4be6-85cf-1a92f14b14fa",
       "title": "TuS Erndtebrück vs TSV Aue-Wingeshausen",
       "description": "Rückrunde",
       "location": "Pulverwaldturnhalle, Jahnstraße 6, 57339 Erndtebrück, Deutschland",
@@ -782,8 +782,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-7c0c017b-b600-4863-91df-6598f5cb1996",
-      "externalUid": "7c0c017b-b600-4863-91df-6598f5cb1996",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-20fafb19-7dca-430a-8f91-3ba0b74333e0",
+      "externalUid": "20fafb19-7dca-430a-8f91-3ba0b74333e0",
       "title": "TSV Aue-Wingeshausen vs TuS Deuz",
       "description": "Rückrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -797,8 +797,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-c51672a1-8252-4d33-888c-fd88076a4fba",
-      "externalUid": "c51672a1-8252-4d33-888c-fd88076a4fba",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-e4d9d218-9cd9-4bf5-9f62-d28f2329e4ba",
+      "externalUid": "e4d9d218-9cd9-4bf5-9f62-d28f2329e4ba",
       "title": "TuS Johannland vs TSV Aue-Wingeshausen",
       "description": "Rückrunde",
       "location": "Johannlandschule, Kirchweg 28, 57250 Netphen-Hainchen, Deutschland",
@@ -812,8 +812,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-1eb45768-b72e-4e7f-a65c-e208c4ffd09a",
-      "externalUid": "1eb45768-b72e-4e7f-a65c-e208c4ffd09a",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-f6bfed5c-fffc-4243-9860-681471e70bb3",
+      "externalUid": "f6bfed5c-fffc-4243-9860-681471e70bb3",
       "title": "TSV Aue-Wingeshausen vs Spvg. Rinsdorf II",
       "description": "Rückrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -827,8 +827,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-b88a77ca-0013-430f-a766-72beda7f6241",
-      "externalUid": "b88a77ca-0013-430f-a766-72beda7f6241",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-8e64aca9-3f9d-4729-97fc-1be60edaad83",
+      "externalUid": "8e64aca9-3f9d-4729-97fc-1be60edaad83",
       "title": "TSG Helberhausen vs TSV Aue-Wingeshausen",
       "description": "Rückrunde",
       "location": "Turnhalle Helberhausen, Jahnstraße, 57271 Hilchenbach-Helberhausen, Deutschland",
@@ -842,8 +842,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-4a22d1ec-158b-445f-a953-d06da9e8b689",
-      "externalUid": "4a22d1ec-158b-445f-a953-d06da9e8b689",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-b726806b-86be-41ae-ad5e-8e3b9212ca36",
+      "externalUid": "b726806b-86be-41ae-ad5e-8e3b9212ca36",
       "title": "TSV Aue-Wingeshausen vs TV Arfeld",
       "description": "Rückrunde",
       "location": "Grundschulturnhalle, An der Schule 6, 57319 Bad Berleburg-Wingeshausen, Deutschland",
@@ -857,8 +857,8 @@
       "external": true
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-70d106f9-30a6-4bc2-9ea9-b9c34c8277ed",
-      "externalUid": "70d106f9-30a6-4bc2-9ea9-b9c34c8277ed",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-f377cfed-a1e4-45f4-a0b2-b56151e3ca59",
+      "externalUid": "f377cfed-a1e4-45f4-a0b2-b56151e3ca59",
       "title": "Eiserfelder TV vs TSV Aue-Wingeshausen",
       "description": "Rückrunde",
       "location": "Hubenfeldhale II, Wehrstr. 24, 57080 Siegen-Niederschelden, Deutschland",
