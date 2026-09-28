@@ -112,14 +112,23 @@ def fetch_ics(url,name):
             last=e; break
     raise RuntimeError(f'HTTP 429: Too Many Requests – myTischtennis begrenzt den Abruf nach 3 Versuchen') if isinstance(last,urllib.error.HTTPError) and last.code==429 else last
 
+os.makedirs('generated',exist_ok=True)
+SOURCE_CACHE='generated/sync-sources.json'
+source_mode='firebase'
 try:
     sources=docs('publicSyncSources')
+    with open(SOURCE_CACHE,'w',encoding='utf-8') as f:json.dump({'savedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'sources':sources},f,ensure_ascii=False,indent=2)
 except Exception as e:
-    print(f'FEHLER Firebase-Quellenliste: {e}',flush=True)
-    print('Vorhandene generierte Dateien bleiben unverändert. Synchronisation wird sauber beendet.',flush=True)
-    sys.exit(3)
+    print(f'HINWEIS Firebase-Quellenliste: {e}',flush=True)
+    try:
+        with open(SOURCE_CACHE,'r',encoding='utf-8') as f:sources=json.load(f).get('sources',[])
+        source_mode='cache'
+        print(f'Verwende letzte gültige Quellenkonfiguration aus Cache: {len(sources)} Quellen.',flush=True)
+    except Exception:
+        print('FEHLER: Weder Firebase noch eine gespeicherte Quellenkonfiguration sind verfügbar.',flush=True)
+        sys.exit(3)
 new_events=[]; status=[]
-print(f'Gefundene aktive Quellen: {len(sources)}',flush=True)
+print(f'Gefundene aktive Quellen: {len(sources)} (Konfiguration: {source_mode})',flush=True)
 # Vorherige erfolgreiche Daten laden, damit ein Rate-Limit nichts löscht.
 old_events=[]
 try:
@@ -150,7 +159,7 @@ for idx,src in enumerate(sources):
 os.makedirs('generated',exist_ok=True)
 now=datetime.datetime.now(datetime.timezone.utc).isoformat()
 with open('generated/external-events.json','w',encoding='utf-8') as f:json.dump({'generatedAt':now,'events':new_events,'sources':status},f,ensure_ascii=False,indent=2)
-with open('generated/status.json','w',encoding='utf-8') as f:json.dump({'generatedAt':now,'eventCount':len(new_events),'sourceCount':len(sources),'sources':status},f,ensure_ascii=False,indent=2)
+with open('generated/status.json','w',encoding='utf-8') as f:json.dump({'generatedAt':now,'eventCount':len(new_events),'sourceCount':len(sources),'sourceConfigMode':source_mode,'sources':status},f,ensure_ascii=False,indent=2)
 failed=sum(1 for x in status if not x['ok'])
 print(f'Fertig: {len(sources)-failed}/{len(sources)} Quellen aktuell erfolgreich, {len(new_events)} Termine verfügbar.',flush=True)
 # ICS-Ausgabe für alle veröffentlichten Kalender erzeugen.
@@ -196,5 +205,8 @@ try:
     with open('generated/calendars.json','w',encoding='utf-8') as f:json.dump({'generatedAt':now,'calendars':manifest},f,ensure_ascii=False,indent=2)
     if not cals:print('HINWEIS: Kein Kalender ist für ICS freigegeben.',flush=True)
 except Exception as e:
-    print('FEHLER ICS-Ausgabe:',e,flush=True);sys.exit(4)
+    print('HINWEIS ICS-Ausgabe konnte nicht aktualisiert werden:',e,flush=True)
+    existing=os.path.isdir('generated/calendars') and any(x.endswith('.ics') for x in os.listdir('generated/calendars'))
+    if existing:print('Vorhandene ICS-Ausgabedateien bleiben erhalten.',flush=True)
+    else:sys.exit(4)
 if sources and failed==len(sources):print('Hinweis: externe Quellen aktuell nicht erreichbar; vorhandene Daten/ICS-Ausgaben wurden trotzdem erzeugt.',flush=True)
