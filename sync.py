@@ -119,4 +119,41 @@ with open('generated/external-events.json','w',encoding='utf-8') as f:json.dump(
 with open('generated/status.json','w',encoding='utf-8') as f:json.dump({'generatedAt':now,'eventCount':len(new_events),'sourceCount':len(sources),'sources':status},f,ensure_ascii=False,indent=2)
 failed=sum(1 for x in status if not x['ok'])
 print(f'Fertig: {len(sources)-failed}/{len(sources)} Quellen aktuell erfolgreich, {len(new_events)} Termine verfügbar.',flush=True)
-if sources and failed==len(sources):sys.exit(2)
+# ICS-Ausgabe für alle veröffentlichten Kalender erzeugen.
+def query_eq(collection,field,value):
+    run=f'https://firestore.googleapis.com/v1/projects/{PROJECT}/databases/(default)/documents:runQuery'
+    v={'booleanValue':value} if isinstance(value,bool) else {'stringValue':str(value)}
+    body=json.dumps({'structuredQuery':{'from':[{'collectionId':collection}],'where':{'fieldFilter':{'field':{'fieldPath':field},'op':'EQUAL','value':v}}}}).encode()
+    req=urllib.request.Request(run,data=body,headers={'Content-Type':'application/json','User-Agent':USER_AGENT})
+    with urllib.request.urlopen(req,timeout=30) as r:data=json.load(r)
+    out=[]
+    for x in data:
+        if 'document' in x:
+            q=x['document'];z={k:val(v) for k,v in q.get('fields',{}).items()};z['id']=q['name'].rsplit('/',1)[-1];out.append(z)
+    return out
+def icsesc(s):return str(s or '').replace('\','\\').replace('\n','\\n').replace(',','\,').replace(';','\;')
+def icstamp(d,t=''):
+    d=str(d or '').replace('-','');tt=str(t or '').replace(':','');return d+'T'+(tt+'000000')[:6] if t else d
+def write_calendar(cal,items):
+    L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//TSV Aue-Wingeshausen//Vereinskalender//DE','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:'+icsesc(cal.get('name','Kalender'))];seen=set()
+    for e in sorted(items,key=lambda x:(x.get('date',''),x.get('time',''),x.get('title',''))):
+        key=(e.get('externalUid') or e.get('id'),e.get('date'),e.get('time'))
+        if key in seen:continue
+        seen.add(key);L+=['BEGIN:VEVENT','UID:'+icsesc(str(key[0])+'@vereinskalender-tsv-aw'),'DTSTAMP:'+datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ')]
+        if e.get('allDay') or not e.get('time'):L+=['DTSTART;VALUE=DATE:'+icstamp(e.get('date'))]
+        else:L+=['DTSTART:'+icstamp(e.get('date'),e.get('time')),'DTEND:'+icstamp(e.get('date'),e.get('endTime') or e.get('time'))]
+        L+=['SUMMARY:'+icsesc(e.get('title','Termin'))]
+        if e.get('description'):L+=['DESCRIPTION:'+icsesc(e.get('description'))]
+        if e.get('location'):L+=['LOCATION:'+icsesc(e.get('location'))]
+        L+=['END:VEVENT']
+    L+=['END:VCALENDAR'];os.makedirs('generated/calendars',exist_ok=True);open('generated/calendars/'+cal['id']+'.ics','w',encoding='utf-8',newline='').write('\r\n'.join(L)+'\r\n')
+try:
+    cals=query_eq('calendars','publishIcs',True);ext=new_events
+    for c in cals:
+        ids=(c.get('sources') or []) if c.get('type')=='aggregate' else [c['id']];items=[e for e in ext if e.get('calendarId') in ids and e.get('visibility')=='public']
+        for cid in ids:
+            try:items+=query_eq('events','calendarId',cid)
+            except Exception as qe:print(f'HINWEIS lokale Termine {cid}: {qe}',flush=True)
+        items=[e for e in items if e.get('visibility')=='public'];write_calendar(c,items);print(f'ICS {c.get("name",c["id"])}: {len(items)} Termine -> generated/calendars/{c["id"]}.ics',flush=True)
+except Exception as e:print('FEHLER ICS-Ausgabe:',e,flush=True)
+if sources and failed==len(sources):print('Hinweis: externe Quellen aktuell nicht erreichbar; vorhandene Daten/ICS-Ausgaben wurden trotzdem erzeugt.',flush=True)
