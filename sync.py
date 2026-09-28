@@ -1,7 +1,7 @@
 import json,urllib.request,urllib.parse,urllib.error,re,datetime,os,sys,time,random,email.utils
 PROJECT='vereinskalender-tsv-aw'
 API=f'https://firestore.googleapis.com/v1/projects/{PROJECT}/databases/(default)/documents'
-USER_AGENT='TSV-Aue-Wingeshausen-Vereinskalender/1.2 (+https://vereinskalender-tsv-aw.web.app)'
+USER_AGENT='TSV-Aue-Wingeshausen-Vereinskalender/1.3 (+https://vereinskalender-tsv-aw.web.app)'
 
 
 def val(x):
@@ -12,14 +12,42 @@ def val(x):
     return None
 
 
+def firebase_wait(headers,attempt):
+    raw=headers.get('Retry-After') if headers else None
+    if raw:
+        try:return max(1,min(int(raw),180))
+        except ValueError:
+            try:
+                target=email.utils.parsedate_to_datetime(raw)
+                now=datetime.datetime.now(datetime.timezone.utc)
+                return max(1,min(int((target-now).total_seconds()),180))
+            except Exception:pass
+    return [20,45,90][min(attempt,2)]
+
+def firebase_json(req,label):
+    last=None
+    for attempt in range(4):
+        try:
+            with urllib.request.urlopen(req,timeout=45) as r:return json.load(r)
+        except urllib.error.HTTPError as e:
+            last=e
+            if e.code!=429:
+                raise RuntimeError(f'{label}: HTTP {e.code} {e.reason}')
+            if attempt>=3:break
+            wait=firebase_wait(e.headers,attempt)
+            print(f'FIREBASE RATE-LIMIT {label}: HTTP 429 – warte {wait}s, Versuch {attempt+2}/4 …',flush=True)
+            time.sleep(wait)
+        except Exception as e:
+            last=e;break
+    if isinstance(last,urllib.error.HTTPError) and last.code==429:
+        raise RuntimeError(f'{label}: HTTP 429 Too Many Requests – Firebase begrenzt den Abruf vorübergehend')
+    raise RuntimeError(f'{label}: {last}')
+
 def docs(collection):
     url=API+'/'+collection+'?pageSize=1000'; out=[]
     while url:
-        req=urllib.request.Request(url,headers={'User-Agent':USER_AGENT})
-        try:
-            with urllib.request.urlopen(req,timeout=30) as r:data=json.load(r)
-        except urllib.error.HTTPError as e:
-            raise RuntimeError(f'Firebase {collection}: HTTP {e.code}. Bitte Vereinskalender 0.6.4 inkl. Firestore-Regeln deployen.')
+        req=urllib.request.Request(url,headers={'User-Agent':USER_AGENT,'Accept':'application/json'})
+        data=firebase_json(req,'Firebase '+collection)
         for q in data.get('documents',[]):
             z={k:val(v) for k,v in q.get('fields',{}).items()}; z['id']=q['name'].rsplit('/',1)[-1]; out.append(z)
         token=data.get('nextPageToken'); url=API+'/'+collection+'?pageSize=1000&pageToken='+urllib.parse.quote(token) if token else None
@@ -84,7 +112,13 @@ def fetch_ics(url,name):
             last=e; break
     raise RuntimeError(f'HTTP 429: Too Many Requests – myTischtennis begrenzt den Abruf nach 3 Versuchen') if isinstance(last,urllib.error.HTTPError) and last.code==429 else last
 
-sources=docs('publicSyncSources'); new_events=[]; status=[]
+try:
+    sources=docs('publicSyncSources')
+except Exception as e:
+    print(f'FEHLER Firebase-Quellenliste: {e}',flush=True)
+    print('Vorhandene generierte Dateien bleiben unverändert. Synchronisation wird sauber beendet.',flush=True)
+    sys.exit(3)
+new_events=[]; status=[]
 print(f'Gefundene aktive Quellen: {len(sources)}',flush=True)
 # Vorherige erfolgreiche Daten laden, damit ein Rate-Limit nichts löscht.
 old_events=[]
@@ -120,17 +154,12 @@ with open('generated/status.json','w',encoding='utf-8') as f:json.dump({'generat
 failed=sum(1 for x in status if not x['ok'])
 print(f'Fertig: {len(sources)-failed}/{len(sources)} Quellen aktuell erfolgreich, {len(new_events)} Termine verfügbar.',flush=True)
 # ICS-Ausgabe für alle veröffentlichten Kalender erzeugen.
+_FIREBASE_CACHE={}
+def cached_docs(collection):
+    if collection not in _FIREBASE_CACHE:_FIREBASE_CACHE[collection]=docs(collection)
+    return _FIREBASE_CACHE[collection]
 def query_eq(collection,field,value):
-    run=f'https://firestore.googleapis.com/v1/projects/{PROJECT}/databases/(default)/documents:runQuery'
-    v={'booleanValue':value} if isinstance(value,bool) else {'stringValue':str(value)}
-    body=json.dumps({'structuredQuery':{'from':[{'collectionId':collection}],'where':{'fieldFilter':{'field':{'fieldPath':field},'op':'EQUAL','value':v}}}}).encode()
-    req=urllib.request.Request(run,data=body,headers={'Content-Type':'application/json','User-Agent':USER_AGENT})
-    with urllib.request.urlopen(req,timeout=30) as r:data=json.load(r)
-    out=[]
-    for x in data:
-        if 'document' in x:
-            q=x['document'];z={k:val(v) for k,v in q.get('fields',{}).items()};z['id']=q['name'].rsplit('/',1)[-1];out.append(z)
-    return out
+    return [x for x in cached_docs(collection) if x.get(field)==value]
 def icsesc(s):
     b=chr(92)
     return str(s or '').replace(b,b+b).replace(chr(10),b+'n').replace(',',b+',').replace(';',b+';')
@@ -150,12 +179,11 @@ def write_calendar(cal,items):
         L+=['END:VEVENT']
     L+=['END:VCALENDAR'];os.makedirs('generated/calendars',exist_ok=True);open('generated/calendars/'+cal['id']+'.ics','w',encoding='utf-8',newline='').write('\r\n'.join(L)+'\r\n')
 try:
-    cals=query_eq('calendars','publishIcs',True);ext=new_events
+    all_cals=cached_docs('calendars');all_events=cached_docs('events')
+    cals=[c for c in all_cals if c.get('publishIcs') is True];ext=new_events
     for c in cals:
         ids=(c.get('sources') or []) if c.get('type')=='aggregate' else [c['id']];items=[e for e in ext if e.get('calendarId') in ids and e.get('visibility')=='public']
-        for cid in ids:
-            try:items+=query_eq('events','calendarId',cid)
-            except Exception as qe:print(f'HINWEIS lokale Termine {cid}: {qe}',flush=True)
+        items += [e for e in all_events if e.get('calendarId') in ids]
         items=[e for e in items if e.get('visibility')=='public'];write_calendar(c,items);print(f'ICS {c.get("name",c["id"])}: {len(items)} Termine -> generated/calendars/{c["id"]}.ics',flush=True)
 except Exception as e:print('FEHLER ICS-Ausgabe:',e,flush=True)
 if sources and failed==len(sources):print('Hinweis: externe Quellen aktuell nicht erreichbar; vorhandene Daten/ICS-Ausgaben wurden trotzdem erzeugt.',flush=True)
