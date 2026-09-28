@@ -154,17 +154,14 @@ with open('generated/status.json','w',encoding='utf-8') as f:json.dump({'generat
 failed=sum(1 for x in status if not x['ok'])
 print(f'Fertig: {len(sources)-failed}/{len(sources)} Quellen aktuell erfolgreich, {len(new_events)} Termine verfügbar.',flush=True)
 # ICS-Ausgabe für alle veröffentlichten Kalender erzeugen.
-_FIREBASE_CACHE={}
-def cached_docs(collection):
-    if collection not in _FIREBASE_CACHE:_FIREBASE_CACHE[collection]=docs(collection)
-    return _FIREBASE_CACHE[collection]
-def query_eq(collection,field,value):
-    return [x for x in cached_docs(collection) if x.get(field)==value]
 def icsesc(s):
     b=chr(92)
     return str(s or '').replace(b,b+b).replace(chr(10),b+'n').replace(',',b+',').replace(';',b+';')
 def icstamp(d,t=''):
     d=str(d or '').replace('-','');tt=str(t or '').replace(':','');return d+'T'+(tt+'000000')[:6] if t else d
+def truthy(v):return v is True or str(v).lower() in ('true','1','yes','ja')
+def is_ics_published(c):
+    return any(truthy(c.get(k)) for k in ('publishIcs','publishICS','icsPublished','icsEnabled','publish_ics'))
 def write_calendar(cal,items):
     L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//TSV Aue-Wingeshausen//Vereinskalender//DE','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:'+icsesc(cal.get('name','Kalender'))];seen=set()
     for e in sorted(items,key=lambda x:(x.get('date',''),x.get('time',''),x.get('title',''))):
@@ -177,13 +174,27 @@ def write_calendar(cal,items):
         if e.get('description'):L+=['DESCRIPTION:'+icsesc(e.get('description'))]
         if e.get('location'):L+=['LOCATION:'+icsesc(e.get('location'))]
         L+=['END:VEVENT']
-    L+=['END:VCALENDAR'];os.makedirs('generated/calendars',exist_ok=True);open('generated/calendars/'+cal['id']+'.ics','w',encoding='utf-8',newline='').write('\r\n'.join(L)+'\r\n')
+    L+=['END:VCALENDAR'];os.makedirs('generated/calendars',exist_ok=True)
+    path='generated/calendars/'+cal['id']+'.ics'
+    with open(path,'w',encoding='utf-8',newline='') as f:f.write(chr(13)+chr(10).join([]) if False else ('\r\n'.join(L)+'\r\n'))
+    return path,len(seen)
 try:
-    all_cals=cached_docs('calendars');all_events=cached_docs('events')
-    cals=[c for c in all_cals if c.get('publishIcs') is True];ext=new_events
+    all_cals=docs('calendars');all_events=docs('events')
+    cals=[c for c in all_cals if is_ics_published(c)]
+    print(f'ICS-freigegebene Kalender: {len(cals)}',flush=True);manifest=[]
     for c in cals:
-        ids=(c.get('sources') or []) if c.get('type')=='aggregate' else [c['id']];items=[e for e in ext if e.get('calendarId') in ids and e.get('visibility')=='public']
-        items += [e for e in all_events if e.get('calendarId') in ids]
-        items=[e for e in items if e.get('visibility')=='public'];write_calendar(c,items);print(f'ICS {c.get("name",c["id"])}: {len(items)} Termine -> generated/calendars/{c["id"]}.ics',flush=True)
-except Exception as e:print('FEHLER ICS-Ausgabe:',e,flush=True)
+        ctype=str(c.get('type','')).lower()
+        ids=(c.get('sources') or c.get('sourceCalendarIds') or []) if ctype in ('aggregate','collection','sammelkalender') else [c['id']]
+        ids=[str(x) for x in ids if x]
+        items=[e for e in new_events if e.get('calendarId') in ids and e.get('visibility','public')=='public']
+        items += [e for e in all_events if e.get('calendarId') in ids and e.get('visibility','public')=='public']
+        path,count=write_calendar(c,items)
+        if not os.path.isfile(path):raise RuntimeError('Datei wurde nicht erzeugt: '+path)
+        manifest.append({'id':c['id'],'name':c.get('name',c['id']),'path':path,'eventCount':count})
+        print(f'ICS OK {c.get("name",c["id"])}: {count} Termine -> {path}',flush=True)
+    os.makedirs('generated',exist_ok=True)
+    with open('generated/calendars.json','w',encoding='utf-8') as f:json.dump({'generatedAt':now,'calendars':manifest},f,ensure_ascii=False,indent=2)
+    if not cals:print('HINWEIS: Kein Kalender ist für ICS freigegeben.',flush=True)
+except Exception as e:
+    print('FEHLER ICS-Ausgabe:',e,flush=True);sys.exit(4)
 if sources and failed==len(sources):print('Hinweis: externe Quellen aktuell nicht erreichbar; vorhandene Daten/ICS-Ausgaben wurden trotzdem erzeugt.',flush=True)
