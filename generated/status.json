@@ -1,19 +1,35 @@
 {
-  "generatedAt": "2026-09-28T12:01:03.063108+00:00",
-  "eventCount": 36,
-  "sourceCount": 2,
+  "generatedAt": "2026-09-28T14:53:07.041539+00:00",
+  "eventCount": 58,
+  "sourceCount": 4,
   "sources": [
+    {
+      "id": "Lwhn99SHIq7ia28DDaoi",
+      "name": "3. & 4. Mannschaft",
+      "count": 16,
+      "ok": true,
+      "stale": false
+    },
+    {
+      "id": "bPnIGG4pYHcyBVY3MVmO",
+      "name": "Jungen 15",
+      "count": 6,
+      "ok": true,
+      "stale": false
+    },
     {
       "id": "hPUtii2eOk4rIqBqVRp0",
       "name": "2. Mannschaft",
       "count": 18,
-      "ok": true
+      "ok": true,
+      "stale": false
     },
     {
       "id": "mDk8XR4jYBzNXQLRMoNC",
       "name": "1. Mannschaft",
       "count": 18,
-      "ok": true
+      "ok": true,
+      "stale": false
     }
   ]
 }
