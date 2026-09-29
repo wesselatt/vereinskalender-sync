@@ -1,212 +1,509 @@
-import json,urllib.request,urllib.parse,urllib.error,re,datetime,os,sys,time,random,email.utils
-PROJECT='vereinskalender-tsv-aw'
-API=f'https://firestore.googleapis.com/v1/projects/{PROJECT}/databases/(default)/documents'
-USER_AGENT='TSV-Aue-Wingeshausen-Vereinskalender/1.3 (+https://vereinskalender-tsv-aw.web.app)'
+"""TSV ICS-Sync 0.5.3: ausschließlich freigegebene Daten, keine Admin-Anmeldung.
+
+Die vorhandenen Firestore-Regeln bleiben unverändert. Netzfunktionen sind für
+lokale Tests injizierbar. Import dieses Moduls startet keinen Netzabruf.
+"""
+from __future__ import annotations
+
+import datetime as dt
+import email.utils
+import hashlib
+import json
+import os
+from pathlib import Path
+import random
+import re
+import sys
+import tempfile
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
+from zoneinfo import ZoneInfo
+
+VERSION = "0.5.3"
+PROJECT = "vereinskalender-tsv-aw"
+API = f"https://firestore.googleapis.com/v1/projects/{PROJECT}/databases/(default)/documents"
+USER_AGENT = "TSV-Vereinskalender/0.5.3 (+https://vereinskalender-tsv-aw.web.app)"
+BERLIN = ZoneInfo("Europe/Berlin")
+UTC = dt.timezone.utc
 
 
-def val(x):
-    for k in ('stringValue','booleanValue','integerValue','doubleValue','timestampValue'):
-        if k in x:return x[k]
-    if 'arrayValue' in x:return [val(y) for y in x['arrayValue'].get('values',[])]
-    if 'mapValue' in x:return {k:val(v) for k,v in x['mapValue'].get('fields',{}).items()}
+def utcnow():
+    return dt.datetime.now(UTC).isoformat()
+
+
+def atomic_json(path, value):
+    atomic_bytes(path, (json.dumps(value, ensure_ascii=False, indent=2) + "\n").encode("utf-8"))
+
+
+def atomic_bytes(path, value):
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(prefix=".tsv-", dir=path.parent)
+    try:
+        with os.fdopen(fd, "wb") as f:
+            f.write(value)
+        os.replace(tmp, path)
+    finally:
+        if os.path.exists(tmp):
+            os.unlink(tmp)
+
+
+def load_json(path, default):
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return default
+
+
+def scalar(value):
+    if "stringValue" in value:
+        return value["stringValue"]
+    if "booleanValue" in value:
+        return value["booleanValue"]
+    if "integerValue" in value:
+        return int(value["integerValue"])
+    if "doubleValue" in value:
+        return float(value["doubleValue"])
+    if "timestampValue" in value:
+        return value["timestampValue"]
+    if "arrayValue" in value:
+        return [scalar(x) for x in value["arrayValue"].get("values", [])]
+    if "mapValue" in value:
+        return {k: scalar(v) for k, v in value["mapValue"].get("fields", {}).items()}
     return None
 
 
-def firebase_wait(headers,attempt):
-    raw=headers.get('Retry-After') if headers else None
-    if raw:
-        try:return max(1,min(int(raw),180))
-        except ValueError:
-            try:
-                target=email.utils.parsedate_to_datetime(raw)
-                now=datetime.datetime.now(datetime.timezone.utc)
-                return max(1,min(int((target-now).total_seconds()),180))
-            except Exception:pass
-    return [20,45,90][min(attempt,2)]
+def document(raw):
+    result = {k: scalar(v) for k, v in raw.get("fields", {}).items()}
+    result["id"] = raw["name"].rsplit("/", 1)[-1]
+    return result
 
-def firebase_json(req,label):
-    last=None
-    for attempt in range(4):
+
+class RemoteError(RuntimeError):
+    def __init__(self, label, code, status="", message=""):
+        self.code = code
+        self.status = status
+        detail = f" – {status}" if status else ""
+        # Keine Servertexte mit URLs, Auth-Daten oder Quellinhalten protokollieren.
+        hint = {
+            403: "Zugriff verweigert; kein erneuter Versuch. Abfrage und Freigabe prüfen.",
+            429: "Abrufkontingent oder Anfragerate begrenzt; Ursache nicht allein aus HTTP 429 bestimmbar.",
+            400: "Abfrage ungültig oder erforderlicher Index fehlt; Konfiguration prüfen.",
+        }.get(code, "Abruf fehlgeschlagen.")
+        super().__init__(f"{label}: HTTP {code}{detail}. {hint}")
+
+
+def wait_seconds(headers, attempt, now=None):
+    """Retry-After niemals verkürzen. Zu lange Wartezeiten werden nicht abgewartet."""
+    raw = headers.get("Retry-After") if headers else None
+    if raw:
         try:
-            with urllib.request.urlopen(req,timeout=45) as r:return json.load(r)
-        except urllib.error.HTTPError as e:
-            last=e
-            if e.code!=429:
-                raise RuntimeError(f'{label}: HTTP {e.code} {e.reason}')
-            if attempt>=3:break
-            wait=firebase_wait(e.headers,attempt)
-            print(f'FIREBASE RATE-LIMIT {label}: HTTP 429 – warte {wait}s, Versuch {attempt+2}/4 …',flush=True)
-            time.sleep(wait)
-        except Exception as e:
-            last=e;break
-    if isinstance(last,urllib.error.HTTPError) and last.code==429:
-        raise RuntimeError(f'{label}: HTTP 429 Too Many Requests – Firebase begrenzt den Abruf vorübergehend')
-    raise RuntimeError(f'{label}: {last}')
-
-def docs(collection):
-    url=API+'/'+collection+'?pageSize=1000'; out=[]
-    while url:
-        req=urllib.request.Request(url,headers={'User-Agent':USER_AGENT,'Accept':'application/json'})
-        data=firebase_json(req,'Firebase '+collection)
-        for q in data.get('documents',[]):
-            z={k:val(v) for k,v in q.get('fields',{}).items()}; z['id']=q['name'].rsplit('/',1)[-1]; out.append(z)
-        token=data.get('nextPageToken'); url=API+'/'+collection+'?pageSize=1000&pageToken='+urllib.parse.quote(token) if token else None
-    return out
-
-
-def unfold(body): return re.sub(r'\r?\n[ \t]','',body)
-def text(v): return (v or '').replace('\\n','\n').replace('\\,',',').replace('\\;',';').replace('\\\\','\\')
-def dt(x):
-    if not x:return None
-    z=x.rstrip('Z')
-    if re.match(r'^\d{8}$',z):return (f'{z[:4]}-{z[4:6]}-{z[6:8]}','',True)
-    m=re.match(r'^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})',z)
-    return (f'{m.group(1)}-{m.group(2)}-{m.group(3)}',f'{m.group(4)}:{m.group(5)}',False) if m else None
-
-
-def parse(body,src):
-    out=[]; cur=None
-    for line in unfold(body).splitlines():
-        if line=='BEGIN:VEVENT':cur={};continue
-        if line=='END:VEVENT':
-            if cur and cur.get('DTSTART'):
-                st=dt(cur['DTSTART']); en=dt(cur.get('DTEND'))
-                if st:
-                    out.append({'id':'ext-'+src['id']+'-'+(cur.get('UID') or str(len(out))), 'externalUid':cur.get('UID',''), 'title':(src.get('prefix') or '')+text(cur.get('SUMMARY','Termin'))+(src.get('suffix') or ''), 'description':text(cur.get('DESCRIPTION','')), 'location':text(cur.get('LOCATION','')), 'date':st[0], 'time':st[1], 'endTime':en[1] if en and en[0]==st[0] else '', 'allDay':st[2], 'visibility':src.get('visibility','public'), 'calendarId':src.get('calendarId',''), 'externalSourceId':src['id'], 'external':True})
-            cur=None;continue
-        if cur is not None and ':' in line:
-            k,v=line.split(':',1); k=k.split(';',1)[0].upper()
-            if k in ('UID','SUMMARY','DESCRIPTION','LOCATION','DTSTART','DTEND'):cur[k]=v
-    return out
-
-
-def retry_after_seconds(headers,attempt):
-    raw=headers.get('Retry-After') if headers else None
-    if raw:
-        try:return max(1,min(int(raw),180))
-        except ValueError:
+            return max(0, float(raw))
+        except (TypeError, ValueError):
             try:
-                target=email.utils.parsedate_to_datetime(raw)
-                now=datetime.datetime.now(datetime.timezone.utc)
-                return max(1,min(int((target-now).total_seconds()),180))
-            except Exception:pass
-    return [30,60][min(attempt,1)]
+                target = email.utils.parsedate_to_datetime(raw)
+                if target.tzinfo is None:
+                    target = target.replace(tzinfo=UTC)
+                return max(0, (target - (now or dt.datetime.now(UTC))).total_seconds())
+            except (TypeError, ValueError, OverflowError):
+                pass
+    return (20, 45)[min(attempt, 1)]
 
 
-def fetch_ics(url,name):
-    headers={'User-Agent':USER_AGENT,'Accept':'text/calendar,text/plain;q=0.9,*/*;q=0.1','Accept-Language':'de-DE,de;q=0.9,en;q=0.5','Cache-Control':'no-cache'}
-    last=None
+class Firestore:
+    def __init__(self, opener=urllib.request.urlopen, sleep=time.sleep, log=print, base=API):
+        self.opener, self.sleep, self.log, self.base = opener, sleep, log, base
+        self.cache = {}
+
+    def request(self, url, label, body=None):
+        headers = {"User-Agent": USER_AGENT, "Accept": "application/json"}
+        payload = None
+        if body is not None:
+            headers["Content-Type"] = "application/json"
+            payload = json.dumps(body).encode("utf-8")
+        for attempt in range(3):
+            req = urllib.request.Request(url, data=payload, headers=headers)
+            try:
+                with self.opener(req, timeout=45) as res:
+                    return json.load(res)
+            except urllib.error.HTTPError as exc:
+                try:
+                    detail = json.loads(exc.read(65536)).get("error", {})
+                except (ValueError, OSError):
+                    detail = {}
+                err = RemoteError(label, exc.code, str(detail.get("status", "")))
+                if exc.code not in (429, 500, 502, 503, 504) or attempt == 2:
+                    raise err from None
+                delay = wait_seconds(exc.headers, attempt)
+                if delay > 180:
+                    self.log(f"{label}: Server verlangt {int(delay)} s Pause; kein vorzeitiger Wiederholungsversuch.")
+                    raise err from None
+                self.log(f"WARTE {label}: HTTP {exc.code}, {int(delay)} s, Versuch {attempt + 2}/3 …")
+                self.sleep(delay)
+            except (urllib.error.URLError, TimeoutError) as exc:
+                raise RuntimeError(f"{label}: Netzwerkverbindung fehlgeschlagen ({type(exc).__name__}).") from None
+        raise RuntimeError("Nicht erreichbarer Zustand")
+
+    def sync_sources(self):
+        """Nur diese bereits öffentliche technische Collection darf gelistet werden."""
+        out, token, visited = [], None, set()
+        while True:
+            params = {"pageSize": 500}
+            if token:
+                params["pageToken"] = token
+            raw = self.request(self.base + "/publicSyncSources?" + urllib.parse.urlencode(params), "Firebase Quellenliste")
+            out.extend(document(d) for d in raw.get("documents", []))
+            token = raw.get("nextPageToken")
+            if not token:
+                return [s for s in out if s.get("active", True) is True]
+            if token in visited:
+                raise RuntimeError("Firebase Quellenliste: wiederholter Seitenschlüssel.")
+            visited.add(token)
+
+    def query(self, collection, filters):
+        key = (collection, tuple(filters))
+        if key in self.cache:
+            return self.cache[key]
+        # Verhindert auch versehentliche spätere unbeschränkte REST-Listen.
+        if collection == "calendars":
+            if filters not in ([("publishIcs", True)], [("publishHomepage", True)]):
+                raise ValueError("Kalenderabfrage benötigt eine ausdrückliche Veröffentlichungsfreigabe.")
+        elif collection == "events":
+            f = dict(filters)
+            if f.get("visibility") != "public" or not f.get("calendarId") or len(filters) != 2:
+                raise ValueError("Terminabfrage benötigt Kalender-ID UND visibility=public.")
+        else:
+            raise ValueError("Diese Sammlung wird vom öffentlichen Export nicht gelesen.")
+        ff = [{"fieldFilter": {"field": {"fieldPath": k}, "op": "EQUAL", "value":
+               {"booleanValue": v} if isinstance(v, bool) else {"stringValue": v}}} for k, v in filters]
+        where = ff[0] if len(ff) == 1 else {"compositeFilter": {"op": "AND", "filters": ff}}
+        out, cursor, seen = [], None, set()
+        while True:
+            query = {"from": [{"collectionId": collection}], "where": where,
+                     "orderBy": [{"field": {"fieldPath": "__name__"}, "direction": "ASCENDING"}], "limit": 500}
+            if cursor:
+                query["startAt"] = {"values": [{"referenceValue": cursor}], "before": False}
+            raw = self.request(self.base + ":runQuery", "Firebase veröffentlichte " + collection, {"structuredQuery": query})
+            if not isinstance(raw, list):
+                raise RuntimeError("Firebase: unerwartetes Abfrageformat.")
+            docs = [row["document"] for row in raw if "document" in row]
+            for d in docs:
+                if d["name"] not in seen:
+                    out.append(document(d)); seen.add(d["name"])
+            if len(docs) < 500:
+                break
+            next_cursor = docs[-1]["name"]
+            if cursor == next_cursor:
+                raise RuntimeError("Firebase: Seitenumbruch konnte nicht fortgesetzt werden.")
+            cursor = next_cursor
+        self.cache[key] = out
+        return out
+
+    def public_calendars(self):
+        records = self.query("calendars", [("publishIcs", True)]) + self.query("calendars", [("publishHomepage", True)])
+        return {c["id"]: c for c in records if c.get("publishIcs") is True or c.get("publishHomepage") is True}
+
+    def public_events(self, calendar_id):
+        return self.query("events", [("calendarId", calendar_id), ("visibility", "public")])
+
+
+def source_url(url):
+    url = str(url or "").strip()
+    if url.lower().startswith("webcal://"):
+        url = "https://" + url[9:]
+    parts = urllib.parse.urlsplit(url)
+    if parts.scheme != "https" or not parts.hostname or parts.username or parts.password:
+        raise ValueError("ICS-Quelle benötigt eine HTTPS-/webcal-Adresse ohne eingebettetes Passwort.")
+    return url
+
+
+def fetch_ics(url, name, opener=urllib.request.urlopen, sleep=time.sleep, log=print):
+    url = source_url(url)
     for attempt in range(3):
+        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "text/calendar,text/plain;q=0.9"})
         try:
-            req=urllib.request.Request(url,headers=headers)
-            with urllib.request.urlopen(req,timeout=60) as r:
-                return r.read().decode('utf-8','replace')
-        except urllib.error.HTTPError as e:
-            last=e
-            if e.code!=429: raise
-            if attempt>=2: break
-            wait=retry_after_seconds(e.headers,attempt)
-            print(f'RATE-LIMIT {name}: HTTP 429 – warte {wait}s, Versuch {attempt+2}/3 …',flush=True)
-            time.sleep(wait)
-        except Exception as e:
-            last=e; break
-    raise RuntimeError(f'HTTP 429: Too Many Requests – myTischtennis begrenzt den Abruf nach 3 Versuchen') if isinstance(last,urllib.error.HTTPError) and last.code==429 else last
+            with opener(req, timeout=60) as res:
+                raw = res.read(8 * 1024 * 1024 + 1)
+                if len(raw) > 8 * 1024 * 1024:
+                    raise ValueError("ICS-Datei überschreitet 8 MiB.")
+                return raw.decode("utf-8-sig", "strict")
+        except urllib.error.HTTPError as exc:
+            if exc.code not in (429, 500, 502, 503, 504) or attempt == 2:
+                raise RemoteError("ICS-Quelle " + name, exc.code) from None
+            delay = wait_seconds(exc.headers, attempt)
+            if delay > 180:
+                raise RemoteError("ICS-Quelle " + name, exc.code) from None
+            log(f"WARTE Quelle {name}: HTTP {exc.code}, {int(delay)} s, Versuch {attempt + 2}/3 …")
+            sleep(delay)
 
-os.makedirs('generated',exist_ok=True)
-SOURCE_CACHE='generated/sync-sources.json'
-source_mode='firebase'
-try:
-    sources=docs('publicSyncSources')
-    with open(SOURCE_CACHE,'w',encoding='utf-8') as f:json.dump({'savedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'sources':sources},f,ensure_ascii=False,indent=2)
-except Exception as e:
-    print(f'HINWEIS Firebase-Quellenliste: {e}',flush=True)
+
+def unescape(value):
+    return re.sub(r"\\([nN,;\\])", lambda m: "\n" if m[1] in "nN" else m[1], value)
+
+
+def parse_stamp(value, params=""):
+    if re.fullmatch(r"\d{8}", value):
+        return dt.datetime.strptime(value, "%Y%m%d").date()
+    is_utc = value.endswith("Z")
+    value = value.rstrip("Z")
+    result = dt.datetime.strptime(value, "%Y%m%dT%H%M%S" if len(value) == 15 else "%Y%m%dT%H%M")
+    match = re.search(r'(?:^|;)TZID=("[^"]+"|[^;]+)', params, flags=re.I)
+    zone = UTC if is_utc else ZoneInfo(match[1].strip('"')) if match else BERLIN
+    return result.replace(tzinfo=zone).astimezone(BERLIN)
+
+
+def parse_feed(body, source):
+    lines = re.sub(r"\r?\n[ \t]", "", body.replace("\r\n", "\n")).splitlines()
+    if "BEGIN:VCALENDAR" not in lines or "END:VCALENDAR" not in lines:
+        raise ValueError("Die Antwort ist kein vollständiger ICS-Kalender.")
+    events, current, nested = [], None, 0
+    for line in lines:
+        if line == "BEGIN:VEVENT":
+            if current is not None:
+                raise ValueError("Verschachtelter VEVENT-Block.")
+            current, nested = {}, 0
+        elif line == "END:VEVENT" and current is not None:
+            if current.get("STATUS", ("", ""))[0] != "CANCELLED":
+                if "RRULE" in current:
+                    # Keine falsche Einzelinstanz aus einer Serie erzeugen.
+                    raise ValueError("Dieser automatische Quellimport enthält RRULE-Serien. Bitte dafür den Google-/ICS-Import der WebApp verwenden.")
+                if "UID" not in current or "DTSTART" not in current:
+                    raise ValueError("ICS-Termin ohne UID oder DTSTART.")
+                start = parse_stamp(*current["DTSTART"])
+                end = parse_stamp(*current["DTEND"]) if "DTEND" in current else None
+                allday = not isinstance(start, dt.datetime)
+                uid = unescape(current["UID"][0])
+                e = {"id": "ext-" + source["id"] + "-" + uid, "externalUid": uid,
+                     "title": str(source.get("prefix") or "") + unescape(current.get("SUMMARY", ("Termin", ""))[0]) + str(source.get("suffix") or ""),
+                     "description": unescape(current.get("DESCRIPTION", ("", ""))[0]),
+                     "location": unescape(current.get("LOCATION", ("", ""))[0]),
+                     "date": start.isoformat() if allday else start.date().isoformat(),
+                     "time": "" if allday else start.strftime("%H:%M"),
+                     "endTime": end.strftime("%H:%M") if isinstance(end, dt.datetime) else "",
+                     "allDay": allday, "visibility": source.get("visibility"),
+                     "calendarId": source.get("calendarId", ""), "externalSourceId": source["id"], "external": True}
+                if end is not None:
+                    e["endDate"] = end.date().isoformat() if isinstance(end, dt.datetime) else end.isoformat()
+                events.append(e)
+            current = None
+        elif current is not None:
+            if line.startswith("BEGIN:"):
+                nested += 1
+            elif line.startswith("END:"):
+                nested -= 1
+            elif nested == 0 and ":" in line:
+                key, value = line.split(":", 1)
+                name, _, params = key.partition(";")
+                current[name.upper()] = (value, params)
+    if current is not None:
+        raise ValueError("Nicht abgeschlossener VEVENT-Block.")
+    return events
+
+
+def clean_event(event):
+    # Nur Termine, die ausdrücklich öffentlich markiert wurden.
+    if event.get("visibility") != "public":
+        return None
+    fields = ("id", "externalUid", "externalSourceId", "title", "description", "location", "date", "time", "endTime", "endDate", "allDay", "calendarId", "external")
+    result = {k: event[k] for k in fields if k in event}
+    result["visibility"] = "public"
+    return result
+
+
+def source_ids(calendar, calendars, trail=()):
+    cid = calendar["id"]
+    if cid in trail:
+        raise ValueError("Sammelkalender enthält einen Kreisverweis.")
+    if calendar.get("type", "source") != "aggregate":
+        return [cid]
+    out = []
+    for entry in calendar.get("sources", []):
+        sid = entry if isinstance(entry, str) else entry.get("id", "")
+        themes = calendar.get("sourceVisibility", {}).get(sid, ["public"])
+        if "public" not in themes:
+            continue
+        if sid not in calendars:
+            raise ValueError("Ein eingebundener Quellkalender ist nicht öffentlich freigegeben. Keine privaten Quelldaten werden exportiert.")
+        out.extend(source_ids(calendars[sid], calendars, trail + (cid,)))
+    return list(dict.fromkeys(out))
+
+
+def ics_escape(value):
+    text = str(value or "").replace("\r\n", "\n").replace("\r", "\n").replace("\x00", "")
+    return text.replace("\\", "\\\\").replace("\n", "\\n").replace(";", "\\;").replace(",", "\\,")
+
+
+def fold_line(value):
+    lines, current, size = [], "", 0
+    for char in value:
+        n = len(char.encode("utf-8"))
+        if size + n > 75:
+            lines.append(current); current, size = " ", 1
+        current += char; size += n
+    lines.append(current)
+    return "\r\n".join(lines)
+
+
+def event_key(e):
+    if e.get("externalUid"):
+        return (e.get("externalSourceId") or e.get("calendarId"), e["externalUid"], e.get("date"), e.get("time"))
+    return (e.get("calendarId"), e.get("id"))
+
+
+def calendar_bytes(calendar, items, stamp=None):
+    stamp = stamp or dt.datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
+    lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//TSV Aue-Wingeshausen//Vereinskalender 0.5.3//DE",
+             "CALSCALE:GREGORIAN", "METHOD:PUBLISH", "X-WR-CALNAME:" + ics_escape(calendar.get("name", "Kalender")), "X-WR-TIMEZONE:Europe/Berlin"]
+    unique = {event_key(e): e for e in items if e.get("visibility") == "public"}
+    for e in sorted(unique.values(), key=lambda x: (x.get("date", ""), x.get("time", ""), x.get("title", ""))):
+        day = dt.date.fromisoformat(e["date"])
+        if not e.get("id"):
+            raise ValueError("Termin ohne stabile ID; Ausgabe nicht überschrieben.")
+        # Jede gespeicherte Serieninstanz hat eine eigene, unveränderliche ID.
+        # Externe Einzeltermine behalten ihre ID bei einer Spielverlegung.
+        ident = e.get("externalSourceId", "") + "|" + str(e["id"])
+        uid = hashlib.sha256(ident.encode()).hexdigest()[:40] + "@vereinskalender-tsv-aw"
+        lines.extend(["BEGIN:VEVENT", "UID:" + uid, "DTSTAMP:" + stamp])
+        if e.get("allDay") or not e.get("time"):
+            end = dt.date.fromisoformat(e["endDate"]) if e.get("endDate") else day + dt.timedelta(days=1)
+            if end <= day:
+                raise ValueError("Ungültiges Ganztages-Enddatum.")
+            lines.extend(["DTSTART;VALUE=DATE:" + day.strftime("%Y%m%d"), "DTEND;VALUE=DATE:" + end.strftime("%Y%m%d")])
+        else:
+            start = dt.datetime.combine(day, dt.time.fromisoformat(e["time"]), BERLIN)
+            lines.append("DTSTART:" + start.astimezone(UTC).strftime("%Y%m%dT%H%M%SZ"))
+            if e.get("endTime"):
+                end_day = dt.date.fromisoformat(e["endDate"]) if e.get("endDate") else day
+                end = dt.datetime.combine(end_day, dt.time.fromisoformat(e["endTime"]), BERLIN)
+                if end <= start and not e.get("endDate"):
+                    end += dt.timedelta(days=1)
+                if end <= start:
+                    raise ValueError("Terminende liegt nicht nach dem Beginn.")
+                lines.append("DTEND:" + end.astimezone(UTC).strftime("%Y%m%dT%H%M%SZ"))
+        lines.append("SUMMARY:" + ics_escape(e.get("title", "Termin")))
+        if e.get("description"):
+            lines.append("DESCRIPTION:" + ics_escape(e["description"]))
+        if e.get("location"):
+            lines.append("LOCATION:" + ics_escape(e["location"]))
+        lines.extend(["STATUS:CONFIRMED", "END:VEVENT"])
+    lines.append("END:VCALENDAR")
+    return ("\r\n".join(fold_line(x) for x in lines) + "\r\n").encode("utf-8"), len(unique)
+
+
+def run(fs=None, fetch=fetch_ics, output=Path("generated"), sleep=time.sleep, log=print):
+    fs = fs or Firestore(log=log)
+    output = Path(output)
+    now = utcnow()
+    summary = {"version": VERSION, "generatedAt": now, "sourceConfigMode": "firebase", "sources": [], "ics": {"state": "pending", "calendars": []}}
+    source_cache = output / "sync-sources.json"
     try:
-        with open(SOURCE_CACHE,'r',encoding='utf-8') as f:sources=json.load(f).get('sources',[])
-        source_mode='cache'
-        print(f'Verwende letzte gültige Quellenkonfiguration aus Cache: {len(sources)} Quellen.',flush=True)
-    except Exception:
-        print('FEHLER: Weder Firebase noch eine gespeicherte Quellenkonfiguration sind verfügbar.',flush=True)
-        sys.exit(3)
-new_events=[]; status=[]
-print(f'Gefundene aktive Quellen: {len(sources)} (Konfiguration: {source_mode})',flush=True)
-# Vorherige erfolgreiche Daten laden, damit ein Rate-Limit nichts löscht.
-old_events=[]
-try:
-    with open('generated/external-events.json','r',encoding='utf-8') as f:old_events=json.load(f).get('events',[])
-except Exception:pass
-old_by_source={}
-for e in old_events: old_by_source.setdefault(e.get('externalSourceId',''),[]).append(e)
+        try:
+            sources = fs.sync_sources()
+        except RemoteError as exc:
+            if exc.code not in (429, 500, 502, 503, 504):
+                raise
+            cached = load_json(source_cache, {})
+            saved = dt.datetime.fromisoformat(cached.get("savedAt", ""))
+            if (dt.datetime.now(UTC) - saved).total_seconds() > 86400 or not isinstance(cached.get("sources"), list):
+                raise RuntimeError("Quellenkonfiguration fehlt oder ist älter als 24 Stunden.") from None
+            sources = cached["sources"]
+            summary["sourceConfigMode"] = "cache"
+        calendars = fs.public_calendars()
+    except Exception as exc:
+        message = str(exc)
+        summary.update({"overall": "error", "configurationError": message, "dataUnchanged": True})
+        summary["ics"]["state"] = "error"
+        atomic_json(output / "status.json", summary)
+        log("FEHLER Konfiguration: " + message)
+        log("Keine Daten-/ICS-Datei wurde als aktuell neu veröffentlicht. Vorhandene Dateien bleiben unverändert.")
+        return 3
 
-for idx,src in enumerate(sources):
-    if idx:
-        delay=15+random.randint(0,10)
-        print(f'Pause zwischen Quellen: {delay}s …',flush=True); time.sleep(delay)
-    url=str(src.get('url','')).strip(); url='https://'+url[9:] if url.lower().startswith('webcal://') else url
-    name=src.get('name','Quelle')
+    sources = [s for s in sources if s.get("active", True) is True]
+    permitted = [s for s in sources if s.get("visibility") == "public" and s.get("calendarId") in calendars]
+    summary["sourceCount"] = len(permitted)
+    summary["excludedNonPublicSources"] = len(sources) - len(permitted)
+    log(f"Öffentlich freigegebene aktive Quellen: {len(permitted)} (Konfiguration: {summary['sourceConfigMode']})")
+    if summary["excludedNonPublicSources"]:
+        log("Nicht öffentlich freigegebene Quellen werden nicht in das öffentliche GitHub-Repository übernommen.")
+    if summary["sourceConfigMode"] == "firebase":
+        keys = ("id", "name", "url", "calendarId", "visibility", "prefix", "suffix", "active")
+        atomic_json(source_cache, {"savedAt": now, "sources": [{k: s[k] for k in keys if k in s} for s in permitted]})
+    old = load_json(output / "external-events.json", {})
+    previous = old.get("events", [])
+    external = []
+    for i, source in enumerate(permitted):
+        if i:
+            pause = random.randint(15, 25); log(f"Pause zwischen Quellen: {pause}s …"); sleep(pause)
+        name = source.get("name", "Quelle")
+        result = {"id": source["id"], "name": name, "calendarId": source["calendarId"], "ok": False, "stale": False}
+        try:
+            items = parse_feed(fetch(source["url"], name), source)
+            external.extend(e for raw in items if (e := clean_event(raw)) is not None)
+            result.update({"ok": True, "count": len(items), "lastSuccessAt": now})
+            log(f"OK {name}: {len(items)} Termine")
+        except Exception as exc:
+            kept = [e for raw in previous if raw.get("externalSourceId") == source["id"] and raw.get("calendarId") == source["calendarId"] and (e := clean_event(raw)) is not None]
+            external.extend(kept)
+            result.update({"count": len(kept), "stale": bool(kept), "error": str(exc)})
+            log(f"FEHLER {name}: {type(exc).__name__}; {len(kept)} bisherige öffentliche Termine bleiben erhalten.")
+        summary["sources"].append(result)
+    summary["eventCount"] = len(external)
+    atomic_json(output / "external-events.json", {"generatedAt": now, "events": external, "sources": summary["sources"]})
+
+    public_ics = {cid: c for cid, c in calendars.items() if c.get("publishIcs") is True}
+    errors, manifest = [], []
+    previous_manifest = load_json(output / "calendars.json", {}).get("calendars", [])
+    old_manifest = {x["id"]: x for x in previous_manifest if "id" in x}
+    for cid, cal in sorted(public_ics.items()):
+        try:
+            if not re.fullmatch(r"[A-Za-z0-9_-]+", cid):
+                raise ValueError("Kalender-ID nicht als Dateiname geeignet.")
+            ids = source_ids(cal, calendars)
+            items = [e for e in external if e.get("calendarId") in ids and e.get("visibility") == "public"]
+            for sid in ids:
+                # Keine Collection-weite Terminliste! Leseregeln werden im Request erfüllt.
+                items.extend(e for raw in fs.public_events(sid) if raw.get("calendarId") == sid and (e := clean_event(raw)) is not None)
+            payload, count = calendar_bytes(cal, items)
+            atomic_bytes(output / "calendars" / (cid + ".ics"), payload)
+            # Kontrolle der tatsächlich geschriebenen Bytes, nicht nur der Dateiexistenz.
+            if (output / "calendars" / (cid + ".ics")).read_bytes() != payload:
+                raise OSError("Prüfung der geschriebenen ICS-Datei fehlgeschlagen.")
+            state = "stale" if any(not x["ok"] and x["calendarId"] in ids for x in summary["sources"]) else "ok"
+            entry = {"id": cid, "name": cal.get("name", cid), "path": f"generated/calendars/{cid}.ics", "eventCount": count,
+                     "generatedAt": now, "state": state, "sha256": hashlib.sha256(payload).hexdigest()}
+            manifest.append(entry)
+            log(f"ICS {state.upper()} {entry['name']}: {count} Termine -> {entry['path']}")
+        except Exception as exc:
+            errors.append({"id": cid, "error": str(exc)})
+            entry = dict(old_manifest.get(cid, {"id": cid, "name": cal.get("name", cid)}))
+            entry.update({"state": "error", "lastAttemptAt": now, "error": str(exc)})
+            manifest.append(entry)
+            log(f"FEHLER ICS {cal.get('name', cid)}: {exc}. Eine bestehende Datei wird nicht durch eine leere ersetzt.")
+    # Nur nach erfolgreicher aktueller Kalender-Abfrage: widerrufene Abos entfernen.
+    revoked = 0
+    for p in (output / "calendars").glob("*.ics"):
+        if p.stem not in public_ics:
+            p.unlink(); revoked += 1
+    failed_sources = sum(not x["ok"] for x in summary["sources"])
+    summary["ics"] = {"state": "error" if errors else "stale" if failed_sources else "ok", "calendars": manifest, "errors": errors, "revokedFilesRemoved": revoked}
+    summary["overall"] = "error" if errors else "partial" if failed_sources else "ok"
+    atomic_json(output / "calendars.json", {"generatedAt": now, "state": summary["ics"]["state"], "calendars": manifest})
+    atomic_json(output / "status.json", summary)
+    log(f"Eingang: {len(permitted) - failed_sources}/{len(permitted)} Quellen aktuell erfolgreich; {len(external)} öffentliche Termine verfügbar.")
+    log(f"Ausgang: {len(public_ics) - len(errors)}/{len(public_ics)} ICS-Dateien erzeugt; Fehler: {len(errors)}.")
+    if not public_ics:
+        log("Kein Kalender mit publishIcs=true freigegeben. Kein Abolink verfügbar.")
+    if errors:
+        return 4
+    return 2 if failed_sources else 0
+
+
+if __name__ == "__main__":
     try:
-        body=fetch_ics(url,name)
-        items=parse(body,src)
-        if not items: raise RuntimeError('Keine VEVENT-Termine gefunden')
-        new_events.extend(items); status.append({'id':src['id'],'name':name,'count':len(items),'ok':True,'stale':False})
-        print(f'OK  {name}: {len(items)} Termine',flush=True)
-    except Exception as e:
-        kept=old_by_source.get(src['id'],[])
-        new_events.extend(kept)
-        status.append({'id':src['id'],'name':name,'count':len(kept),'ok':False,'stale':bool(kept),'error':str(e)})
-        suffix=f' – {len(kept)} zuletzt erfolgreiche Termine bleiben erhalten' if kept else ''
-        print(f'FEHLER {name}: {e}{suffix}',flush=True)
-
-os.makedirs('generated',exist_ok=True)
-now=datetime.datetime.now(datetime.timezone.utc).isoformat()
-with open('generated/external-events.json','w',encoding='utf-8') as f:json.dump({'generatedAt':now,'events':new_events,'sources':status},f,ensure_ascii=False,indent=2)
-with open('generated/status.json','w',encoding='utf-8') as f:json.dump({'generatedAt':now,'eventCount':len(new_events),'sourceCount':len(sources),'sourceConfigMode':source_mode,'sources':status},f,ensure_ascii=False,indent=2)
-failed=sum(1 for x in status if not x['ok'])
-print(f'Fertig: {len(sources)-failed}/{len(sources)} Quellen aktuell erfolgreich, {len(new_events)} Termine verfügbar.',flush=True)
-# ICS-Ausgabe für alle veröffentlichten Kalender erzeugen.
-def icsesc(s):
-    b=chr(92)
-    return str(s or '').replace(b,b+b).replace(chr(10),b+'n').replace(',',b+',').replace(';',b+';')
-def icstamp(d,t=''):
-    d=str(d or '').replace('-','');tt=str(t or '').replace(':','');return d+'T'+(tt+'000000')[:6] if t else d
-def truthy(v):return v is True or str(v).lower() in ('true','1','yes','ja')
-def is_ics_published(c):
-    return any(truthy(c.get(k)) for k in ('publishIcs','publishICS','icsPublished','icsEnabled','publish_ics'))
-def write_calendar(cal,items):
-    L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//TSV Aue-Wingeshausen//Vereinskalender//DE','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:'+icsesc(cal.get('name','Kalender'))];seen=set()
-    for e in sorted(items,key=lambda x:(x.get('date',''),x.get('time',''),x.get('title',''))):
-        key=(e.get('externalUid') or e.get('id'),e.get('date'),e.get('time'))
-        if key in seen:continue
-        seen.add(key);L+=['BEGIN:VEVENT','UID:'+icsesc(str(key[0])+'@vereinskalender-tsv-aw'),'DTSTAMP:'+datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ')]
-        if e.get('allDay') or not e.get('time'):L+=['DTSTART;VALUE=DATE:'+icstamp(e.get('date'))]
-        else:L+=['DTSTART:'+icstamp(e.get('date'),e.get('time')),'DTEND:'+icstamp(e.get('date'),e.get('endTime') or e.get('time'))]
-        L+=['SUMMARY:'+icsesc(e.get('title','Termin'))]
-        if e.get('description'):L+=['DESCRIPTION:'+icsesc(e.get('description'))]
-        if e.get('location'):L+=['LOCATION:'+icsesc(e.get('location'))]
-        L+=['END:VEVENT']
-    L+=['END:VCALENDAR'];os.makedirs('generated/calendars',exist_ok=True)
-    path='generated/calendars/'+cal['id']+'.ics'
-    with open(path,'w',encoding='utf-8',newline='') as f:f.write(chr(13)+chr(10).join([]) if False else ('\r\n'.join(L)+'\r\n'))
-    return path,len(seen)
-try:
-    all_cals=docs('calendars');all_events=docs('events')
-    cals=[c for c in all_cals if is_ics_published(c)]
-    print(f'ICS-freigegebene Kalender: {len(cals)}',flush=True);manifest=[]
-    for c in cals:
-        ctype=str(c.get('type','')).lower()
-        ids=(c.get('sources') or c.get('sourceCalendarIds') or []) if ctype in ('aggregate','collection','sammelkalender') else [c['id']]
-        ids=[str(x) for x in ids if x]
-        items=[e for e in new_events if e.get('calendarId') in ids and e.get('visibility','public')=='public']
-        items += [e for e in all_events if e.get('calendarId') in ids and e.get('visibility','public')=='public']
-        path,count=write_calendar(c,items)
-        if not os.path.isfile(path):raise RuntimeError('Datei wurde nicht erzeugt: '+path)
-        manifest.append({'id':c['id'],'name':c.get('name',c['id']),'path':path,'eventCount':count})
-        print(f'ICS OK {c.get("name",c["id"])}: {count} Termine -> {path}',flush=True)
-    os.makedirs('generated',exist_ok=True)
-    with open('generated/calendars.json','w',encoding='utf-8') as f:json.dump({'generatedAt':now,'calendars':manifest},f,ensure_ascii=False,indent=2)
-    if not cals:print('HINWEIS: Kein Kalender ist für ICS freigegeben.',flush=True)
-except Exception as e:
-    print('HINWEIS ICS-Ausgabe konnte nicht aktualisiert werden:',e,flush=True)
-    existing=os.path.isdir('generated/calendars') and any(x.endswith('.ics') for x in os.listdir('generated/calendars'))
-    if existing:print('Vorhandene ICS-Ausgabedateien bleiben erhalten.',flush=True)
-    else:sys.exit(4)
-if sources and failed==len(sources):print('Hinweis: externe Quellen aktuell nicht erreichbar; vorhandene Daten/ICS-Ausgaben wurden trotzdem erzeugt.',flush=True)
+        sys.exit(run(log=lambda message: print(message, flush=True)))
+    except Exception as error:
+        print("FEHLER: " + str(error), flush=True)
+        sys.exit(1)
