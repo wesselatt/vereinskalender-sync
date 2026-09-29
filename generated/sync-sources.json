@@ -1,0 +1,45 @@
+{
+  "savedAt": "2026-09-29T07:38:48.171984+00:00",
+  "sources": [
+    {
+      "id": "Lwhn99SHIq7ia28DDaoi",
+      "name": "3. & 4. Mannschaft",
+      "url": "webcal://www.mytischtennis.de/community/exportICSCalendar?teamIds=3110019",
+      "calendarId": "KTVRUAwJOeEPjeZOxVE7",
+      "visibility": "public",
+      "prefix": "",
+      "suffix": "",
+      "active": true
+    },
+    {
+      "id": "bPnIGG4pYHcyBVY3MVmO",
+      "name": "Jungen 15",
+      "url": "webcal://www.mytischtennis.de/community/exportICSCalendar?teamIds=3107987",
+      "calendarId": "KTVRUAwJOeEPjeZOxVE7",
+      "visibility": "public",
+      "prefix": "",
+      "suffix": "",
+      "active": true
+    },
+    {
+      "id": "hPUtii2eOk4rIqBqVRp0",
+      "name": "2. Mannschaft",
+      "url": "webcal://www.mytischtennis.de/community/exportICSCalendar?teamIds=3105266",
+      "calendarId": "KTVRUAwJOeEPjeZOxVE7",
+      "visibility": "public",
+      "prefix": "",
+      "suffix": "",
+      "active": true
+    },
+    {
+      "id": "mDk8XR4jYBzNXQLRMoNC",
+      "name": "1. Mannschaft",
+      "url": "webcal://www.mytischtennis.de/community/exportICSCalendar?teamIds=3108908",
+      "calendarId": "KTVRUAwJOeEPjeZOxVE7",
+      "visibility": "public",
+      "prefix": "",
+      "suffix": "",
+      "active": true
+    }
+  ]
+}
