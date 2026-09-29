@@ -1,22 +1,66 @@
 name: ICS Sync
+run-name: ICS Sync ${{ inputs.request_id || github.event_name }}
 on:
   workflow_dispatch:
+    inputs:
+      request_id:
+        description: Kennung des Deployment Managers
+        required: false
+        type: string
   schedule:
     - cron: '0 */3 * * *'
 permissions:
   contents: write
+concurrency:
+  group: vereinskalender-ics-sync
+  cancel-in-progress: false
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
-      - run: python sync.py
-      - run: |
+          python-version: '3.12'
+      - name: Syntax prüfen
+        run: python -m py_compile sync.py
+      - name: Quellen und ICS-Ausgaben aktualisieren
+        id: sync
+        continue-on-error: true
+        run: python sync.py
+      - name: Gültige Ergebnisse und Status speichern
+        if: ${{ always() && steps.sync.outcome != 'skipped' }}
+        run: |
+          if [ ! -d generated ]; then exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add generated
-          git diff --cached --quiet || git commit -m "Automatische ICS-Synchronisation"
-          git push
+          git add -- generated
+          if ! git diff --cached --quiet; then
+            git commit -m "Automatische ICS-Synchronisation"
+            git push
+          fi
+      - name: Ergebnis zusammenfassen
+        if: ${{ always() }}
+        run: |
+          python - <<'PY_SUMMARY'
+          import json, os, pathlib
+          p = pathlib.Path('generated/status.json')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as f:
+              f.write('## TSV Kalender-Synchronisation\n\n')
+              if not p.exists():
+                  f.write('Kein aktueller Statusbericht erzeugt. Laufprotokoll prüfen.\n')
+              else:
+                  s = json.loads(p.read_text(encoding='utf-8'))
+                  f.write('Gesamtstatus: ' + str(s.get('overall', 'unbekannt')) + '\n\n')
+                  f.write('Öffentliche externe Termine: ' + str(s.get('eventCount', 'unbekannt')) + '\n\n')
+                  f.write('ICS-Ausgabe: ' + str(s.get('ics', {}).get('state', 'unbekannt')) + '\n\n')
+                  f.write('Fehler werden nicht als erfolgreicher Export gewertet. Details stehen im Laufprotokoll.\n')
+          PY_SUMMARY
+      - name: Teilfehler ausdrücklich melden
+        if: ${{ always() && steps.sync.outcome == 'failure' }}
+        run: |
+          echo "::error::Eingang und/oder ICS-Ausgang unvollständig. Gültige Teilergebnisse wurden gesichert. Siehe Zusammenfassung."
+          exit 1
