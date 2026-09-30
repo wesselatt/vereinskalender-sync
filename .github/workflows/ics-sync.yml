@@ -42,25 +42,9 @@ jobs:
             git commit -m "Automatische ICS-Synchronisation"
             git push
           fi
-      - name: Ergebnis zusammenfassen
+      - name: Ergebnis mit konkreter Ursache zusammenfassen
         if: ${{ always() }}
-        run: |
-          python - <<'PY_SUMMARY'
-          import json, os, pathlib
-          p = pathlib.Path('generated/status.json')
-          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as f:
-              f.write('## TSV Kalender-Synchronisation\n\n')
-              if not p.exists():
-                  f.write('Kein aktueller Statusbericht erzeugt. Laufprotokoll prüfen.\n')
-              else:
-                  s = json.loads(p.read_text(encoding='utf-8'))
-                  f.write('Gesamtstatus: ' + str(s.get('overall', 'unbekannt')) + '\n\n')
-                  f.write('Öffentliche externe Termine: ' + str(s.get('eventCount', 'unbekannt')) + '\n\n')
-                  f.write('ICS-Ausgabe: ' + str(s.get('ics', {}).get('state', 'unbekannt')) + '\n\n')
-                  f.write('Fehler werden nicht als erfolgreicher Export gewertet. Details stehen im Laufprotokoll.\n')
-          PY_SUMMARY
-      - name: Teilfehler ausdrücklich melden
+        run: python sync.py --summary
+      - name: Teilfehler mit Ursache melden
         if: ${{ always() && steps.sync.outcome == 'failure' }}
-        run: |
-          echo "::error::Eingang und/oder ICS-Ausgang unvollständig. Gültige Teilergebnisse wurden gesichert. Siehe Zusammenfassung."
-          exit 1
+        run: python sync.py --failure-details
