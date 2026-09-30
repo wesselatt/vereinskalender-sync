@@ -1,4 +1,4 @@
-"""TSV ICS-Sync 0.5.3: ausschließlich freigegebene Daten, keine Admin-Anmeldung.
+"""TSV ICS-Sync 0.5.4: ausschließlich freigegebene Daten, keine Admin-Anmeldung.
 
 Die vorhandenen Firestore-Regeln bleiben unverändert. Netzfunktionen sind für
 lokale Tests injizierbar. Import dieses Moduls startet keinen Netzabruf.
@@ -21,10 +21,10 @@ import urllib.parse
 import urllib.request
 from zoneinfo import ZoneInfo
 
-VERSION = "0.5.3"
+VERSION = "0.5.4"
 PROJECT = "vereinskalender-tsv-aw"
 API = f"https://firestore.googleapis.com/v1/projects/{PROJECT}/databases/(default)/documents"
-USER_AGENT = "TSV-Vereinskalender/0.5.3 (+https://vereinskalender-tsv-aw.web.app)"
+USER_AGENT = "TSV-Vereinskalender/0.5.4 (+https://vereinskalender-tsv-aw.web.app)"
 BERLIN = ZoneInfo("Europe/Berlin")
 UTC = dt.timezone.utc
 
@@ -82,6 +82,23 @@ def document(raw):
     return result
 
 
+def response_error(payload):
+    """Google streaming APIs may return a list containing an error object.
+    Never call .get on a scalar/list; never misread a stream error as zero rows.
+    Return only a structured object, not server messages or token-bearing URLs.
+    """
+    nodes = payload if isinstance(payload, list) else [payload]
+    for row in nodes:
+        if isinstance(row, dict) and isinstance(row.get("error"), dict):
+            return row["error"]
+    return None
+
+
+def safe_status(detail):
+    value = str(detail.get("status", "")) if isinstance(detail, dict) else ""
+    return value if re.fullmatch(r"[A-Z_]{1,80}", value) else ""
+
+
 class RemoteError(RuntimeError):
     def __init__(self, label, code, status="", message=""):
         self.code = code
@@ -117,6 +134,7 @@ class Firestore:
     def __init__(self, opener=urllib.request.urlopen, sleep=time.sleep, log=print, base=API):
         self.opener, self.sleep, self.log, self.base = opener, sleep, log, base
         self.cache = {}
+        self.failed_queries = {}
 
     def request(self, url, label, body=None):
         headers = {"User-Agent": USER_AGENT, "Accept": "application/json"}
@@ -128,13 +146,19 @@ class Firestore:
             req = urllib.request.Request(url, data=payload, headers=headers)
             try:
                 with self.opener(req, timeout=45) as res:
-                    return json.load(res)
+                    data = json.load(res)
+                detail = response_error(data)
+                if detail is not None:
+                    code = detail.get("code", 500)
+                    if not isinstance(code, int): code = 500
+                    raise RemoteError(label, code, safe_status(detail))
+                return data
             except urllib.error.HTTPError as exc:
                 try:
-                    detail = json.loads(exc.read(65536)).get("error", {})
-                except (ValueError, OSError):
+                    detail = response_error(json.loads(exc.read(65536))) or {}
+                except (ValueError, OSError, UnicodeError):
                     detail = {}
-                err = RemoteError(label, exc.code, str(detail.get("status", "")))
+                err = RemoteError(label, exc.code, safe_status(detail))
                 if exc.code not in (429, 500, 502, 503, 504) or attempt == 2:
                     raise err from None
                 delay = wait_seconds(exc.headers, attempt)
@@ -142,6 +166,12 @@ class Firestore:
                     self.log(f"{label}: Server verlangt {int(delay)} s Pause; kein vorzeitiger Wiederholungsversuch.")
                     raise err from None
                 self.log(f"WARTE {label}: HTTP {exc.code}, {int(delay)} s, Versuch {attempt + 2}/3 …")
+                self.sleep(delay)
+            except RemoteError as exc:
+                if exc.code not in (429, 500, 502, 503, 504) or attempt == 2:
+                    raise
+                delay = wait_seconds({}, attempt)
+                self.log(f"WARTE {label}: Stream-Fehler HTTP {exc.code}, {int(delay)} s, Versuch {attempt + 2}/3 …")
                 self.sleep(delay)
             except (urllib.error.URLError, TimeoutError) as exc:
                 raise RuntimeError(f"{label}: Netzwerkverbindung fehlgeschlagen ({type(exc).__name__}).") from None
@@ -155,6 +185,8 @@ class Firestore:
             if token:
                 params["pageToken"] = token
             raw = self.request(self.base + "/publicSyncSources?" + urllib.parse.urlencode(params), "Firebase Quellenliste")
+            if not isinstance(raw, dict) or not isinstance(raw.get("documents", []), list):
+                raise RuntimeError("Firebase Quellenliste: unerwartetes Antwortformat; bisherige Daten werden nicht ersetzt.")
             out.extend(document(d) for d in raw.get("documents", []))
             token = raw.get("nextPageToken")
             if not token:
@@ -164,6 +196,16 @@ class Firestore:
             visited.add(token)
 
     def query(self, collection, filters):
+        key = (collection, tuple(filters))
+        if key in self.failed_queries:
+            raise self.failed_queries[key]
+        try:
+            return self._query(collection, filters)
+        except (RemoteError, ValueError, RuntimeError) as exc:
+            self.failed_queries[key] = exc
+            raise
+
+    def _query(self, collection, filters):
         key = (collection, tuple(filters))
         if key in self.cache:
             return self.cache[key]
@@ -189,6 +231,8 @@ class Firestore:
             raw = self.request(self.base + ":runQuery", "Firebase veröffentlichte " + collection, {"structuredQuery": query})
             if not isinstance(raw, list):
                 raise RuntimeError("Firebase: unerwartetes Abfrageformat.")
+            if any(not isinstance(row, dict) for row in raw):
+                raise RuntimeError("Firebase Abfrage: ungültiger Stream-Eintrag.")
             docs = [row["document"] for row in raw if "document" in row]
             for d in docs:
                 if d["name"] not in seen:
@@ -355,7 +399,7 @@ def event_key(e):
 
 def calendar_bytes(calendar, items, stamp=None):
     stamp = stamp or dt.datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
-    lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//TSV Aue-Wingeshausen//Vereinskalender 0.5.3//DE",
+    lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//TSV Aue-Wingeshausen//Vereinskalender 0.5.4//DE",
              "CALSCALE:GREGORIAN", "METHOD:PUBLISH", "X-WR-CALNAME:" + ics_escape(calendar.get("name", "Kalender")), "X-WR-TIMEZONE:Europe/Berlin"]
     unique = {event_key(e): e for e in items if e.get("visibility") == "public"}
     for e in sorted(unique.values(), key=lambda x: (x.get("date", ""), x.get("time", ""), x.get("title", ""))):
@@ -397,7 +441,7 @@ def run(fs=None, fetch=fetch_ics, output=Path("generated"), sleep=time.sleep, lo
     fs = fs or Firestore(log=log)
     output = Path(output)
     now = utcnow()
-    summary = {"version": VERSION, "generatedAt": now, "sourceConfigMode": "firebase", "sources": [], "ics": {"state": "pending", "calendars": []}}
+    summary = {"version": VERSION, "runId": os.environ.get("GITHUB_RUN_ID", "local"), "runAttempt": os.environ.get("GITHUB_RUN_ATTEMPT", "1"), "configurationStage": "sources", "generatedAt": now, "sourceConfigMode": "firebase", "sources": [], "ics": {"state": "pending", "calendars": []}}
     source_cache = output / "sync-sources.json"
     try:
         try:
@@ -406,21 +450,25 @@ def run(fs=None, fetch=fetch_ics, output=Path("generated"), sleep=time.sleep, lo
             if exc.code not in (429, 500, 502, 503, 504):
                 raise
             cached = load_json(source_cache, {})
+            if not isinstance(cached, dict):
+                raise RuntimeError("Gespeicherte Quellenkonfiguration hat ein ungültiges Format.") from None
             saved = dt.datetime.fromisoformat(cached.get("savedAt", ""))
             if (dt.datetime.now(UTC) - saved).total_seconds() > 86400 or not isinstance(cached.get("sources"), list):
                 raise RuntimeError("Quellenkonfiguration fehlt oder ist älter als 24 Stunden.") from None
             sources = cached["sources"]
             summary["sourceConfigMode"] = "cache"
+        summary["configurationStage"] = "calendar-permissions"
         calendars = fs.public_calendars()
     except Exception as exc:
         message = str(exc)
-        summary.update({"overall": "error", "configurationError": message, "dataUnchanged": True})
+        summary.update({"overall": "error", "configurationError": message, "configurationCode": getattr(exc, "code", None), "configurationStatus": getattr(exc, "status", ""), "dataUnchanged": True})
         summary["ics"]["state"] = "error"
         atomic_json(output / "status.json", summary)
         log("FEHLER Konfiguration: " + message)
         log("Keine Daten-/ICS-Datei wurde als aktuell neu veröffentlicht. Vorhandene Dateien bleiben unverändert.")
         return 3
 
+    summary["configurationStage"] = "complete"
     sources = [s for s in sources if s.get("active", True) is True]
     permitted = [s for s in sources if s.get("visibility") == "public" and s.get("calendarId") in calendars]
     summary["sourceCount"] = len(permitted)
@@ -447,7 +495,7 @@ def run(fs=None, fetch=fetch_ics, output=Path("generated"), sleep=time.sleep, lo
         except Exception as exc:
             kept = [e for raw in previous if raw.get("externalSourceId") == source["id"] and raw.get("calendarId") == source["calendarId"] and (e := clean_event(raw)) is not None]
             external.extend(kept)
-            result.update({"count": len(kept), "stale": bool(kept), "error": str(exc)})
+            result.update({"count": len(kept), "stale": bool(kept), "error": str(exc), "code": getattr(exc, "code", None), "status": getattr(exc, "status", "")})
             log(f"FEHLER {name}: {type(exc).__name__}; {len(kept)} bisherige öffentliche Termine bleiben erhalten.")
         summary["sources"].append(result)
     summary["eventCount"] = len(external)
@@ -477,7 +525,7 @@ def run(fs=None, fetch=fetch_ics, output=Path("generated"), sleep=time.sleep, lo
             manifest.append(entry)
             log(f"ICS {state.upper()} {entry['name']}: {count} Termine -> {entry['path']}")
         except Exception as exc:
-            errors.append({"id": cid, "error": str(exc)})
+            errors.append({"id": cid, "name": cal.get("name", cid), "error": str(exc), "code": getattr(exc, "code", None), "status": getattr(exc, "status", "")})
             entry = dict(old_manifest.get(cid, {"id": cid, "name": cal.get("name", cid)}))
             entry.update({"state": "error", "lastAttemptAt": now, "error": str(exc)})
             manifest.append(entry)
@@ -501,8 +549,70 @@ def run(fs=None, fetch=fetch_ics, output=Path("generated"), sleep=time.sleep, lo
     return 2 if failed_sources else 0
 
 
+def report_summary(summary):
+    """Plain-language phase separation; empty/missing reports cannot imply success."""
+    if not isinstance(summary, dict):
+        return ["Kein gültiger aktueller Sync-Bericht verfügbar."]
+    lines = ["Gesamtstatus: " + str(summary.get("overall", "unbekannt")),
+             "Stand: " + str(summary.get("generatedAt", "unbekannt"))]
+    if summary.get("configurationError"):
+        lines += ["Konfiguration – Schritt: " + str(summary.get("configurationStage", "unbekannt")),
+                  "FEHLER: " + str(summary["configurationError"])]
+    else:
+        sources = summary.get("sources", [])
+        if not isinstance(sources, list): sources = []
+        good = sum(1 for x in sources if isinstance(x, dict) and x.get("ok") is True)
+        lines.append(f"Eingang: {good}/{len(sources)} Quellen aktuell erfolgreich.")
+        for x in sources:
+            if isinstance(x, dict) and x.get("ok") is not True:
+                lines.append("Quelle " + str(x.get("name", x.get("id", "?"))) + ": " + str(x.get("error", "nicht aktualisiert")))
+    ics = summary.get("ics", {})
+    if not isinstance(ics, dict): ics = {}
+    lines.append("ICS-Ausgang: " + str(ics.get("state", "unbekannt")))
+    for x in ics.get("errors", []):
+        if isinstance(x, dict):
+            lines.append("Kalender " + str(x.get("name", x.get("id", "?"))) + ": " + str(x.get("error", "nicht aktualisiert")))
+    if summary.get("dataUnchanged"):
+        lines.append("Datenbestand unverändert; keine neue Ausgabe als aktuell bestätigt.")
+    return lines
+
+
+def read_current_report():
+    summary = load_json(Path("generated/status.json"), None)
+    expected = os.environ.get("GITHUB_RUN_ID")
+    attempt = os.environ.get("GITHUB_RUN_ATTEMPT", "1")
+    if not isinstance(summary, dict) or (expected and (summary.get("runId") != expected or str(summary.get("runAttempt")) != attempt)):
+        return None
+    return summary
+
+
+def emit_report(annotation=False):
+    summary = read_current_report()
+    lines = report_summary(summary)
+    for line in lines: print(line, flush=True)
+    path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if path and not annotation:
+        import html
+        with open(path, "a", encoding="utf-8") as f:
+            f.write("## TSV Kalender-Synchronisation\n\n<pre>" + html.escape("\n".join(lines)) + "</pre>\n")
+    if annotation:
+        # Keep actual failures red; do not claim a commit succeeded in this stage.
+        relevant = [line for line in lines if line.startswith(("FEHLER:", "Quelle ", "Kalender "))]
+        text = " | ".join(relevant) if relevant else "Sync-Lauf fehlgeschlagen. " + " | ".join(lines)
+        text = text.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+        print("::error::" + text[:1800], flush=True)
+        return 1
+    return 0
+
+
 if __name__ == "__main__":
     try:
+        if sys.argv[1:] == ["--summary"]:
+            sys.exit(emit_report())
+        if sys.argv[1:] == ["--failure-details"]:
+            sys.exit(emit_report(annotation=True))
+        if sys.argv[1:]:
+            raise ValueError("Unbekannter Aufruf; erlaubt: --summary oder --failure-details.")
         sys.exit(run(log=lambda message: print(message, flush=True)))
     except Exception as error:
         print("FEHLER: " + str(error), flush=True)
