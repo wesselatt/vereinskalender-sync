@@ -1,145 +1,123 @@
 {
-  "generatedAt": "2026-09-30T00:01:06.098632+00:00",
-  "state": "error",
+  "generatedAt": "2026-09-30T09:03:11.694530+00:00",
+  "state": "ok",
   "calendars": [
     {
       "id": "6uidZ76YWkBkDeguOrvH",
       "name": "Ski",
       "path": "generated/calendars/6uidZ76YWkBkDeguOrvH.ics",
       "eventCount": 0,
-      "generatedAt": "2026-09-30T00:01:06.098632+00:00",
+      "generatedAt": "2026-09-30T09:03:11.694530+00:00",
       "state": "ok",
-      "sha256": "cbdd2b30aba3d923d0e53ef8d5fdae66f917529371220a0b917af6071364839c"
+      "sha256": "9d500943cbf74c39cd0b5dca9094bd4e74666b00c35aef59f7eaf5033b7fb94d"
     },
     {
       "id": "7iTDwC2M99nxmS2uexqU",
       "name": "Zwischentrakt",
       "path": "generated/calendars/7iTDwC2M99nxmS2uexqU.ics",
       "eventCount": 315,
-      "generatedAt": "2026-09-30T00:01:06.098632+00:00",
+      "generatedAt": "2026-09-30T09:03:11.694530+00:00",
       "state": "ok",
-      "sha256": "b066a1aabd36237101a1e6ab4ddec2fbe0f52d9da1fffaa2bb7b61b94ab3c917"
+      "sha256": "9b6d3415905b8892ec747718c9c674614d6ec60281bdb57f304a52382aa721a3"
     },
     {
       "id": "9RmE9TiYMdimdNHzSdwI",
       "name": "Vereinskalender",
       "path": "generated/calendars/9RmE9TiYMdimdNHzSdwI.ics",
       "eventCount": 17,
-      "generatedAt": "2026-09-29T18:03:22.286284+00:00",
-      "state": "error",
-      "sha256": "ae8e79fb9046394fca631f4821a0279c3a96a5d3dd3df751b8bcbcaadb86e0a5",
-      "lastAttemptAt": "2026-09-30T00:01:06.098632+00:00",
-      "error": "'list' object has no attribute 'get'"
+      "generatedAt": "2026-09-30T09:03:11.694530+00:00",
+      "state": "ok",
+      "sha256": "12f48f8f0f596221c0cf17a6d714a13879bb3b81bd4372f7c4fed9c992ee4f0e"
     },
     {
       "id": "AMLdD7zPs0KdqTQ0Tmux",
       "name": "Turnhalle",
       "path": "generated/calendars/AMLdD7zPs0KdqTQ0Tmux.ics",
       "eventCount": 1787,
-      "generatedAt": "2026-09-29T18:03:22.286284+00:00",
-      "state": "error",
-      "sha256": "a2e79582de9b4d84e678983181a7222ad5d1f7e2ace0715fa71fddae2a4058bf",
-      "lastAttemptAt": "2026-09-30T00:01:06.098632+00:00",
-      "error": "'list' object has no attribute 'get'"
+      "generatedAt": "2026-09-30T09:03:11.694530+00:00",
+      "state": "ok",
+      "sha256": "bf6ba2e8700e1d561344cdb4066efc380e74af63dba536ff9098da28a5ade19c"
     },
     {
       "id": "KJCkgzR8gAOOPChLUTBs",
       "name": "Vorstand (Allgemein)",
       "path": "generated/calendars/KJCkgzR8gAOOPChLUTBs.ics",
       "eventCount": 0,
-      "generatedAt": "2026-09-29T18:03:22.286284+00:00",
-      "state": "error",
-      "sha256": "79ce7e02b8667fd968b91c6066e59dc2aa5736115f0a984d238dae4ecb991b26",
-      "lastAttemptAt": "2026-09-30T00:01:06.098632+00:00",
-      "error": "'list' object has no attribute 'get'"
+      "generatedAt": "2026-09-30T09:03:11.694530+00:00",
+      "state": "ok",
+      "sha256": "b808ceef3667449cf68b71bf34de145b0d75f844642c75a39a9558f1a998d9ad"
     },
     {
       "id": "KTVRUAwJOeEPjeZOxVE7",
       "name": "Tischtennis",
       "path": "generated/calendars/KTVRUAwJOeEPjeZOxVE7.ics",
       "eventCount": 58,
-      "generatedAt": "2026-09-29T18:03:22.286284+00:00",
-      "state": "error",
-      "sha256": "5828f18d640894f4ef33ebbc7a709ba389aed61c79606144cc142630a8f9eb54",
-      "lastAttemptAt": "2026-09-30T00:01:06.098632+00:00",
-      "error": "'list' object has no attribute 'get'"
+      "generatedAt": "2026-09-30T09:03:11.694530+00:00",
+      "state": "ok",
+      "sha256": "4ce32e9054d420cbb86f7ea4803ad8366ce883b89ad9c3769ebbe9998e3dca8b"
     },
     {
       "id": "Of3dcWv2sTjwaaxpF4Sr",
       "name": "Vorstand (Haupt)",
       "path": "generated/calendars/Of3dcWv2sTjwaaxpF4Sr.ics",
       "eventCount": 0,
-      "generatedAt": "2026-09-29T18:03:22.286284+00:00",
-      "state": "error",
-      "sha256": "b299758275bc7f1a916e5966689703a3746b074dfb6a45cb9323fa7f0c78152d",
-      "lastAttemptAt": "2026-09-30T00:01:06.098632+00:00",
-      "error": "'list' object has no attribute 'get'"
+      "generatedAt": "2026-09-30T09:03:11.694530+00:00",
+      "state": "ok",
+      "sha256": "4806f13baf8f1d70dc8c79a4453b11bf373e1942f47d65916b890566020f3826"
     },
     {
       "id": "OsozM2BUrskDAKkZ8FTM",
       "name": "Leichtathletik",
       "path": "generated/calendars/OsozM2BUrskDAKkZ8FTM.ics",
       "eventCount": 0,
-      "generatedAt": "2026-09-29T18:03:22.286284+00:00",
-      "state": "error",
-      "sha256": "1337271025c4e090ce32fca7276089298e63a555e13cae97baf64c9711edae70",
-      "lastAttemptAt": "2026-09-30T00:01:06.098632+00:00",
-      "error": "'list' object has no attribute 'get'"
+      "generatedAt": "2026-09-30T09:03:11.694530+00:00",
+      "state": "ok",
+      "sha256": "ea11d8de993d72fbe931b1d14740bc5746840d0d2381103b35e966cf2927736c"
     },
     {
       "id": "TeC8LK8ZTUczoNxrLkWj",
       "name": "Vereinsheim",
       "path": "generated/calendars/TeC8LK8ZTUczoNxrLkWj.ics",
       "eventCount": 236,
-      "generatedAt": "2026-09-29T18:03:22.286284+00:00",
-      "state": "error",
-      "sha256": "47981b881c9cabe5e5b5eb8a746c0a875849be755c89bdcc9e82262e1ef5b819",
-      "lastAttemptAt": "2026-09-30T00:01:06.098632+00:00",
-      "error": "'list' object has no attribute 'get'"
+      "generatedAt": "2026-09-30T09:03:11.694530+00:00",
+      "state": "ok",
+      "sha256": "d45fd7fd0eb3fed9ae414929ec052bd1acbda69137fc5daaffb60b11b13deafe"
     },
     {
       "id": "VYEzjdI6U3khooPHxZpv",
       "name": "Fußball",
       "path": "generated/calendars/VYEzjdI6U3khooPHxZpv.ics",
       "eventCount": 0,
-      "generatedAt": "2026-09-29T18:03:22.286284+00:00",
-      "state": "error",
-      "sha256": "de955a58f4a4389f990cd8080c2ee75e5fb858357219c1484dde744eb430096d",
-      "lastAttemptAt": "2026-09-30T00:01:06.098632+00:00",
-      "error": "'list' object has no attribute 'get'"
+      "generatedAt": "2026-09-30T09:03:11.694530+00:00",
+      "state": "ok",
+      "sha256": "27d228e7f9a79c566bdb68d93a36f00c9a7b753287cff9c6e5805696cc70380c"
     },
     {
       "id": "izwulTwykngb8CPfVeg3",
       "name": "Sportplatz",
       "path": "generated/calendars/izwulTwykngb8CPfVeg3.ics",
       "eventCount": 0,
-      "generatedAt": "2026-09-29T18:03:22.286284+00:00",
-      "state": "error",
-      "sha256": "f02b55d5c9070f1f7dbd0fd8a325df276cdbc7e537641b5c0ac419b82c7f9f27",
-      "lastAttemptAt": "2026-09-30T00:01:06.098632+00:00",
-      "error": "'list' object has no attribute 'get'"
+      "generatedAt": "2026-09-30T09:03:11.694530+00:00",
+      "state": "ok",
+      "sha256": "0d91283a573628b0202c4502317ec274ec2cd42d01265ffc53f59e5e5baceecb"
     },
     {
       "id": "s37A1GFGjbQDapWWZNgm",
       "name": "Dart",
       "path": "generated/calendars/s37A1GFGjbQDapWWZNgm.ics",
       "eventCount": 0,
-      "generatedAt": "2026-09-29T18:03:22.286284+00:00",
-      "state": "error",
-      "sha256": "cbb5275ea71f3529ada82452bc0bb2f7ca65dfa805618b378a346c7b8c0095f6",
-      "lastAttemptAt": "2026-09-30T00:01:06.098632+00:00",
-      "error": "'list' object has no attribute 'get'"
+      "generatedAt": "2026-09-30T09:03:11.694530+00:00",
+      "state": "ok",
+      "sha256": "65951263761e503109c3fbbe860a9894ac834942db10e1316e2576ea6fb105b3"
     },
     {
       "id": "xVrZnpNJ8c6X1FCjkJJ9",
       "name": "Turnen",
       "path": "generated/calendars/xVrZnpNJ8c6X1FCjkJJ9.ics",
       "eventCount": 0,
-      "generatedAt": "2026-09-29T18:03:22.286284+00:00",
-      "state": "error",
-      "sha256": "61fb009d0569ab804eaea82b675b9e3686abebab4ce1dc0be79d56bd349bdaa8",
-      "lastAttemptAt": "2026-09-30T00:01:06.098632+00:00",
-      "error": "'list' object has no attribute 'get'"
+      "generatedAt": "2026-09-30T09:03:11.694530+00:00",
+      "state": "ok",
+      "sha256": "fccc44ec9172bb4d30de478183828bb9d6882cdeb747c477e154b9e04705787f"
     }
   ]
 }
