@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-01T15:02:29.772473+00:00",
+  "generatedAt": "2026-10-01T18:03:14.120078+00:00",
   "events": [
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-f020d509-61cc-421b-ae31-dc8a7283c2fb",
-      "externalUid": "f020d509-61cc-421b-ae31-dc8a7283c2fb",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-2abb36a6-034c-473d-84b2-a84b6a9080e3",
+      "externalUid": "2abb36a6-034c-473d-84b2-a84b6a9080e3",
       "externalSourceId": "Lwhn99SHIq7ia28DDaoi",
       "title": "TSV Aue-Wingeshausen III vs TSV Aue-Wingeshausen IV",
       "description": "Vorrunde",
@@ -18,8 +18,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-70b48a9e-9248-450e-999b-58e574fb1a0f",
-      "externalUid": "70b48a9e-9248-450e-999b-58e574fb1a0f",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-d3c7422a-0cff-414a-aada-16146fb917d4",
+      "externalUid": "d3c7422a-0cff-414a-aada-16146fb917d4",
       "externalSourceId": "Lwhn99SHIq7ia28DDaoi",
       "title": "TSV Aue-Wingeshausen III vs VfL Bad Berleburg",
       "description": "Vorrunde",
@@ -34,8 +34,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-b06cc68d-bb8a-4e40-8b44-ccd93dd6c48e",
-      "externalUid": "b06cc68d-bb8a-4e40-8b44-ccd93dd6c48e",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-e1e96fdc-8a0a-4041-8406-0df837e8a774",
+      "externalUid": "e1e96fdc-8a0a-4041-8406-0df837e8a774",
       "externalSourceId": "Lwhn99SHIq7ia28DDaoi",
       "title": "FGF Saalhausen II vs TSV Aue-Wingeshausen III",
       "description": "Vorrunde",
@@ -50,8 +50,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-b6b9003d-6895-40e6-b812-153706525adc",
-      "externalUid": "b6b9003d-6895-40e6-b812-153706525adc",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-dbad7a5f-abc3-4b2c-815d-71e49615a7ac",
+      "externalUid": "dbad7a5f-abc3-4b2c-815d-71e49615a7ac",
       "externalSourceId": "Lwhn99SHIq7ia28DDaoi",
       "title": "TuS Deuz III vs TSV Aue-Wingeshausen III",
       "description": "Vorrunde",
@@ -66,8 +66,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-6c222037-3149-47ec-96ff-8b112776facd",
-      "externalUid": "6c222037-3149-47ec-96ff-8b112776facd",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-2190ad3c-102e-4389-8ca1-a0ac96334cea",
+      "externalUid": "2190ad3c-102e-4389-8ca1-a0ac96334cea",
       "externalSourceId": "Lwhn99SHIq7ia28DDaoi",
       "title": "TSV Aue-Wingeshausen III vs TSG Helberhausen III",
       "description": "Vorrunde",
@@ -82,8 +82,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-9a963011-7910-438b-9e29-e6234dfaf02d",
-      "externalUid": "9a963011-7910-438b-9e29-e6234dfaf02d",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-b857b9d8-ed71-404d-8a99-8bb0c58439fa",
+      "externalUid": "b857b9d8-ed71-404d-8a99-8bb0c58439fa",
       "externalSourceId": "Lwhn99SHIq7ia28DDaoi",
       "title": "TSV Aue-Wingeshausen III vs TTG Netphen V",
       "description": "Vorrunde",
@@ -98,8 +98,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-4866fb19-a484-4d6d-a639-4069c077b4c1",
-      "externalUid": "4866fb19-a484-4d6d-a639-4069c077b4c1",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-600e77f1-9746-4825-ac57-18df931e76d6",
+      "externalUid": "600e77f1-9746-4825-ac57-18df931e76d6",
       "externalSourceId": "Lwhn99SHIq7ia28DDaoi",
       "title": "TTC Feudingen II vs TSV Aue-Wingeshausen III",
       "description": "Vorrunde",
@@ -114,8 +114,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-b32f7946-a753-4e2b-a40f-f7df74e6f8fc",
-      "externalUid": "b32f7946-a753-4e2b-a40f-f7df74e6f8fc",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-a155be3d-deca-42dd-9fb3-76df9dd83d76",
+      "externalUid": "a155be3d-deca-42dd-9fb3-76df9dd83d76",
       "externalSourceId": "Lwhn99SHIq7ia28DDaoi",
       "title": "TuS Hilchenbach IV vs TSV Aue-Wingeshausen III",
       "description": "Vorrunde",
@@ -130,8 +130,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-fee367c4-e6f8-4e22-8f6c-d19dc92b7a2c",
-      "externalUid": "fee367c4-e6f8-4e22-8f6c-d19dc92b7a2c",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-acc89a89-b931-4200-bcf9-a8d5ab98064a",
+      "externalUid": "acc89a89-b931-4200-bcf9-a8d5ab98064a",
       "externalSourceId": "Lwhn99SHIq7ia28DDaoi",
       "title": "TSV Aue-Wingeshausen IV vs TSV Aue-Wingeshausen III",
       "description": "Rückrunde",
@@ -146,8 +146,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-1d82410e-f4e1-423a-b5c9-58a2ee98d354",
-      "externalUid": "1d82410e-f4e1-423a-b5c9-58a2ee98d354",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-3d6da6fb-4894-46c2-89a6-c9fe3e6d2c84",
+      "externalUid": "3d6da6fb-4894-46c2-89a6-c9fe3e6d2c84",
       "externalSourceId": "Lwhn99SHIq7ia28DDaoi",
       "title": "VfL Bad Berleburg vs TSV Aue-Wingeshausen III",
       "description": "Rückrunde",
@@ -162,8 +162,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-ec1204af-1de8-4ff3-be95-152dabce85aa",
-      "externalUid": "ec1204af-1de8-4ff3-be95-152dabce85aa",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-d146b569-90d3-4902-9ea2-fe3c79db5cd2",
+      "externalUid": "d146b569-90d3-4902-9ea2-fe3c79db5cd2",
       "externalSourceId": "Lwhn99SHIq7ia28DDaoi",
       "title": "TSV Aue-Wingeshausen III vs FGF Saalhausen II",
       "description": "Rückrunde",
@@ -178,8 +178,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-74264e08-80c5-4725-9975-5835b4e9bbbc",
-      "externalUid": "74264e08-80c5-4725-9975-5835b4e9bbbc",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-c9439756-ba6d-4ace-a0e3-0fdfe3a0588e",
+      "externalUid": "c9439756-ba6d-4ace-a0e3-0fdfe3a0588e",
       "externalSourceId": "Lwhn99SHIq7ia28DDaoi",
       "title": "TSG Helberhausen III vs TSV Aue-Wingeshausen III",
       "description": "Rückrunde",
@@ -194,8 +194,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-0c28c79d-7c8c-42a9-a5b5-5d51fd20daba",
-      "externalUid": "0c28c79d-7c8c-42a9-a5b5-5d51fd20daba",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-f8a648c3-62fb-4b2d-9d90-6d853fb86e83",
+      "externalUid": "f8a648c3-62fb-4b2d-9d90-6d853fb86e83",
       "externalSourceId": "Lwhn99SHIq7ia28DDaoi",
       "title": "TSV Aue-Wingeshausen III vs TuS Deuz III",
       "description": "Rückrunde",
@@ -210,8 +210,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-6cbf8c99-46ae-4103-b509-66e2b444cdb1",
-      "externalUid": "6cbf8c99-46ae-4103-b509-66e2b444cdb1",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-6023c34d-5b21-4780-b402-297282afbe5e",
+      "externalUid": "6023c34d-5b21-4780-b402-297282afbe5e",
       "externalSourceId": "Lwhn99SHIq7ia28DDaoi",
       "title": "TTG Netphen V vs TSV Aue-Wingeshausen III",
       "description": "Rückrunde",
@@ -226,8 +226,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-74399a34-796c-429d-8a24-9e2e60fd5acc",
-      "externalUid": "74399a34-796c-429d-8a24-9e2e60fd5acc",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-be39cc2e-34fe-4ee7-bf02-b8935122e099",
+      "externalUid": "be39cc2e-34fe-4ee7-bf02-b8935122e099",
       "externalSourceId": "Lwhn99SHIq7ia28DDaoi",
       "title": "TSV Aue-Wingeshausen III vs TTC Feudingen II",
       "description": "Rückrunde",
@@ -242,8 +242,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-Lwhn99SHIq7ia28DDaoi-7c447cb5-f2e6-4443-b3c0-c21366109311",
-      "externalUid": "7c447cb5-f2e6-4443-b3c0-c21366109311",
+      "id": "ext-Lwhn99SHIq7ia28DDaoi-3c4ebaae-52bc-449b-a527-71faba1aac96",
+      "externalUid": "3c4ebaae-52bc-449b-a527-71faba1aac96",
       "externalSourceId": "Lwhn99SHIq7ia28DDaoi",
       "title": "TSV Aue-Wingeshausen III vs TuS Hilchenbach IV",
       "description": "Rückrunde",
@@ -258,8 +258,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-bPnIGG4pYHcyBVY3MVmO-ed36f55e-bc48-4faa-9d9b-80a57058a174",
-      "externalUid": "ed36f55e-bc48-4faa-9d9b-80a57058a174",
+      "id": "ext-bPnIGG4pYHcyBVY3MVmO-ec68fe1a-8bdf-4d54-8ec7-c1d852c9bf09",
+      "externalUid": "ec68fe1a-8bdf-4d54-8ec7-c1d852c9bf09",
       "externalSourceId": "bPnIGG4pYHcyBVY3MVmO",
       "title": "VfB Burbach vs TSV Aue-Wingeshausen",
       "description": "Vorrunde",
@@ -274,8 +274,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-bPnIGG4pYHcyBVY3MVmO-7c1fd404-72c7-4e1f-b09c-901ad44e040e",
-      "externalUid": "7c1fd404-72c7-4e1f-b09c-901ad44e040e",
+      "id": "ext-bPnIGG4pYHcyBVY3MVmO-15737429-54c0-4df2-90b4-c8d0bca3e332",
+      "externalUid": "15737429-54c0-4df2-90b4-c8d0bca3e332",
       "externalSourceId": "bPnIGG4pYHcyBVY3MVmO",
       "title": "TSV Aue-Wingeshausen vs DJK TuS 02 Siegen",
       "description": "Vorrunde",
@@ -290,8 +290,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-bPnIGG4pYHcyBVY3MVmO-11b3ff7d-1078-4d9f-b07f-fc8c70a03e41",
-      "externalUid": "11b3ff7d-1078-4d9f-b07f-fc8c70a03e41",
+      "id": "ext-bPnIGG4pYHcyBVY3MVmO-de80799f-508e-445d-b580-10c1e15c83bf",
+      "externalUid": "de80799f-508e-445d-b580-10c1e15c83bf",
       "externalSourceId": "bPnIGG4pYHcyBVY3MVmO",
       "title": "TTC Wenden vs TSV Aue-Wingeshausen",
       "description": "Vorrunde",
@@ -306,8 +306,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-bPnIGG4pYHcyBVY3MVmO-111d4699-3946-40bb-8f7c-614edabf46fa",
-      "externalUid": "111d4699-3946-40bb-8f7c-614edabf46fa",
+      "id": "ext-bPnIGG4pYHcyBVY3MVmO-3d2f6b8b-d6fc-41c4-a91f-9c0afe4e7682",
+      "externalUid": "3d2f6b8b-d6fc-41c4-a91f-9c0afe4e7682",
       "externalSourceId": "bPnIGG4pYHcyBVY3MVmO",
       "title": "TSV Aue-Wingeshausen vs TTG Netphen",
       "description": "Vorrunde",
@@ -322,8 +322,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-bPnIGG4pYHcyBVY3MVmO-6c6a2128-a797-4461-8d4f-63614324c12f",
-      "externalUid": "6c6a2128-a797-4461-8d4f-63614324c12f",
+      "id": "ext-bPnIGG4pYHcyBVY3MVmO-e4c911ef-e87d-4251-9d1e-0af6572b1c8c",
+      "externalUid": "e4c911ef-e87d-4251-9d1e-0af6572b1c8c",
       "externalSourceId": "bPnIGG4pYHcyBVY3MVmO",
       "title": "TSV Aue-Wingeshausen vs TSG Adler Dielfen",
       "description": "Vorrunde",
@@ -338,8 +338,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-bPnIGG4pYHcyBVY3MVmO-cc244e15-4ff5-4870-b86f-ed8a2be65b2a",
-      "externalUid": "cc244e15-4ff5-4870-b86f-ed8a2be65b2a",
+      "id": "ext-bPnIGG4pYHcyBVY3MVmO-122492c6-d054-40c7-9e76-ac91af7ad047",
+      "externalUid": "122492c6-d054-40c7-9e76-ac91af7ad047",
       "externalSourceId": "bPnIGG4pYHcyBVY3MVmO",
       "title": "TuS Ferndorf  vs TSV Aue-Wingeshausen",
       "description": "Vorrunde",
@@ -354,8 +354,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-dd453237-c057-4486-b0bf-b3e46f625459",
-      "externalUid": "dd453237-c057-4486-b0bf-b3e46f625459",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-bb1e965f-a22f-4214-87e3-850dd9b5f33f",
+      "externalUid": "bb1e965f-a22f-4214-87e3-850dd9b5f33f",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "SV Germania Salchendorf IV vs TSV Aue-Wingeshausen II",
       "description": "Vorrunde",
@@ -370,8 +370,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-ddfee153-74f5-4e20-b611-dbde3e465456",
-      "externalUid": "ddfee153-74f5-4e20-b611-dbde3e465456",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-abd3c6d3-f4e4-4bcf-90d2-77982659517e",
+      "externalUid": "abd3c6d3-f4e4-4bcf-90d2-77982659517e",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "TSV Aue-Wingeshausen II vs TSG Helberhausen II",
       "description": "Vorrunde",
@@ -386,8 +386,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-e2ffe461-65cd-4d2f-99b7-6f608ef5c2ff",
-      "externalUid": "e2ffe461-65cd-4d2f-99b7-6f608ef5c2ff",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-57115696-3b38-4c90-b075-4be426277b44",
+      "externalUid": "57115696-3b38-4c90-b075-4be426277b44",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "SV Germania Salchendorf III vs TSV Aue-Wingeshausen II",
       "description": "Vorrunde",
@@ -402,8 +402,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-dd001511-719d-436b-bed4-9d594624f096",
-      "externalUid": "dd001511-719d-436b-bed4-9d594624f096",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-c514b411-c1f0-43e1-a73f-7812f64803e4",
+      "externalUid": "c514b411-c1f0-43e1-a73f-7812f64803e4",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "TSV Aue-Wingeshausen II vs TuS Erndtebrück II",
       "description": "Vorrunde",
@@ -418,8 +418,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-0abd6d78-6873-4df3-bcf4-e552d92626ee",
-      "externalUid": "0abd6d78-6873-4df3-bcf4-e552d92626ee",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-daddda68-4d9f-4663-aeda-0ce81c09a12b",
+      "externalUid": "daddda68-4d9f-4663-aeda-0ce81c09a12b",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "TTC Feudingen vs TSV Aue-Wingeshausen II",
       "description": "Vorrunde",
@@ -434,8 +434,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-bd498f50-4e8a-46bf-a7bd-543b5aff68d7",
-      "externalUid": "bd498f50-4e8a-46bf-a7bd-543b5aff68d7",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-b0134217-7854-4b8a-a0fc-7684cbbd2242",
+      "externalUid": "b0134217-7854-4b8a-a0fc-7684cbbd2242",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "TSV Aue-Wingeshausen II vs TV Arfeld II",
       "description": "Vorrunde",
@@ -450,8 +450,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-5b78c448-19c9-4aa2-93c4-5bb1b063186a",
-      "externalUid": "5b78c448-19c9-4aa2-93c4-5bb1b063186a",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-ecd42e70-7f92-48ad-a5fc-0082aeb6aa3f",
+      "externalUid": "ecd42e70-7f92-48ad-a5fc-0082aeb6aa3f",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "TSV Aue-Wingeshausen II vs FGF Saalhausen",
       "description": "Vorrunde",
@@ -466,8 +466,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-73db3812-c4e2-47de-8313-9f191e184a00",
-      "externalUid": "73db3812-c4e2-47de-8313-9f191e184a00",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-9b94cc89-90bb-4a3e-a93b-9bbec69935b1",
+      "externalUid": "9b94cc89-90bb-4a3e-a93b-9bbec69935b1",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "TuS Erndtebrück III vs TSV Aue-Wingeshausen II",
       "description": "Vorrunde",
@@ -482,8 +482,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-0b2a3c93-d4ec-4b14-a48c-a1275978b794",
-      "externalUid": "0b2a3c93-d4ec-4b14-a48c-a1275978b794",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-d6d07b35-c198-420c-89b5-f91a4bd9453b",
+      "externalUid": "d6d07b35-c198-420c-89b5-f91a4bd9453b",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "TSV Aue-Wingeshausen II vs TV Laasphe",
       "description": "Vorrunde",
@@ -498,8 +498,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-bd388065-b844-4e54-9ef9-13ef2cd28774",
-      "externalUid": "bd388065-b844-4e54-9ef9-13ef2cd28774",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-9052356c-41d0-43bd-838c-3b43073b8bb7",
+      "externalUid": "9052356c-41d0-43bd-838c-3b43073b8bb7",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "TSV Aue-Wingeshausen II vs SV Germania Salchendorf IV",
       "description": "Rückrunde",
@@ -514,8 +514,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-839fdd61-0cde-4d90-a062-ec19f0528b84",
-      "externalUid": "839fdd61-0cde-4d90-a062-ec19f0528b84",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-12fc60c9-38c7-4dd6-a3ec-68ec356884dc",
+      "externalUid": "12fc60c9-38c7-4dd6-a3ec-68ec356884dc",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "TSV Aue-Wingeshausen II vs SV Germania Salchendorf III",
       "description": "Rückrunde",
@@ -530,8 +530,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-d1d09a20-41aa-4e97-9d9a-8541f0663b30",
-      "externalUid": "d1d09a20-41aa-4e97-9d9a-8541f0663b30",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-1c87238f-50c6-4206-bfd8-4d8bb1bc3750",
+      "externalUid": "1c87238f-50c6-4206-bfd8-4d8bb1bc3750",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "TSG Helberhausen II vs TSV Aue-Wingeshausen II",
       "description": "Rückrunde",
@@ -546,8 +546,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-15f3a8b4-283e-4a12-92fe-fb7f99ae17b1",
-      "externalUid": "15f3a8b4-283e-4a12-92fe-fb7f99ae17b1",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-999f6775-43fb-4d81-882a-7ea5b3b3ee66",
+      "externalUid": "999f6775-43fb-4d81-882a-7ea5b3b3ee66",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "TuS Erndtebrück II vs TSV Aue-Wingeshausen II",
       "description": "Rückrunde",
@@ -562,8 +562,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-cea242a5-c5ae-48d2-a524-516d0b734ec9",
-      "externalUid": "cea242a5-c5ae-48d2-a524-516d0b734ec9",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-8ca0bcc9-b303-46c9-a8ee-2006b6806bc1",
+      "externalUid": "8ca0bcc9-b303-46c9-a8ee-2006b6806bc1",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "TSV Aue-Wingeshausen II vs TTC Feudingen",
       "description": "Rückrunde",
@@ -578,8 +578,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-24e66a65-4e3c-4f59-b03c-648560d8db98",
-      "externalUid": "24e66a65-4e3c-4f59-b03c-648560d8db98",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-cdda1bb1-bfce-4cac-af85-aa02e9234d40",
+      "externalUid": "cdda1bb1-bfce-4cac-af85-aa02e9234d40",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "TV Arfeld II vs TSV Aue-Wingeshausen II",
       "description": "Rückrunde",
@@ -594,8 +594,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-e9ab6fde-e19d-41b6-8337-070bec9dee24",
-      "externalUid": "e9ab6fde-e19d-41b6-8337-070bec9dee24",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-c31d8b5d-6293-41b4-9cc4-a4c3817add4e",
+      "externalUid": "c31d8b5d-6293-41b4-9cc4-a4c3817add4e",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "FGF Saalhausen vs TSV Aue-Wingeshausen II",
       "description": "Rückrunde",
@@ -610,8 +610,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-cef194a1-844e-4f2e-a627-67911a4d61d0",
-      "externalUid": "cef194a1-844e-4f2e-a627-67911a4d61d0",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-dd1b0677-18e0-4322-b9ea-c6b128280ff2",
+      "externalUid": "dd1b0677-18e0-4322-b9ea-c6b128280ff2",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "TSV Aue-Wingeshausen II vs TuS Erndtebrück III",
       "description": "Rückrunde",
@@ -626,8 +626,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-hPUtii2eOk4rIqBqVRp0-73173244-833b-4968-a93d-bf97e2cfd35c",
-      "externalUid": "73173244-833b-4968-a93d-bf97e2cfd35c",
+      "id": "ext-hPUtii2eOk4rIqBqVRp0-fa29152f-a3a3-40ab-8237-03f7b1494013",
+      "externalUid": "fa29152f-a3a3-40ab-8237-03f7b1494013",
       "externalSourceId": "hPUtii2eOk4rIqBqVRp0",
       "title": "TV Laasphe vs TSV Aue-Wingeshausen II",
       "description": "Rückrunde",
@@ -642,8 +642,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-21ff4628-95f1-401b-b074-41cc83fb9e14",
-      "externalUid": "21ff4628-95f1-401b-b074-41cc83fb9e14",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-6c327ad6-7f26-41f4-8a54-7784682a45ad",
+      "externalUid": "6c327ad6-7f26-41f4-8a54-7784682a45ad",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "SV Germania Salchendorf II vs TSV Aue-Wingeshausen",
       "description": "Vorrunde",
@@ -658,8 +658,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-b2b0d4db-a05a-4f71-b072-b93079797b48",
-      "externalUid": "b2b0d4db-a05a-4f71-b072-b93079797b48",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-ab856026-2632-49eb-bb6e-ca2ac76a97a5",
+      "externalUid": "ab856026-2632-49eb-bb6e-ca2ac76a97a5",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "TSV Aue-Wingeshausen vs SuS Niederschelden",
       "description": "Vorrunde",
@@ -674,8 +674,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-16d81c78-e4e7-4650-82ec-aa473afaeb2f",
-      "externalUid": "16d81c78-e4e7-4650-82ec-aa473afaeb2f",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-38794015-3f5d-43e2-9694-c614302b4f0e",
+      "externalUid": "38794015-3f5d-43e2-9694-c614302b4f0e",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "TSV Aue-Wingeshausen vs TuS Erndtebrück",
       "description": "Vorrunde",
@@ -690,8 +690,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-69ebff32-d3cb-433a-bcd6-214437d9c0ba",
-      "externalUid": "69ebff32-d3cb-433a-bcd6-214437d9c0ba",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-21a87246-25bd-4f49-b861-93f779886504",
+      "externalUid": "21a87246-25bd-4f49-b861-93f779886504",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "TuS Deuz vs TSV Aue-Wingeshausen",
       "description": "Vorrunde",
@@ -706,8 +706,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-f99ffb69-7943-4f8f-b882-2d27b24f3273",
-      "externalUid": "f99ffb69-7943-4f8f-b882-2d27b24f3273",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-67e398c1-bb8d-4196-a459-88e51a391acf",
+      "externalUid": "67e398c1-bb8d-4196-a459-88e51a391acf",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "TSV Aue-Wingeshausen vs TuS Johannland",
       "description": "Vorrunde",
@@ -722,8 +722,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-9c411891-d388-499b-9192-9ef07f79b7a0",
-      "externalUid": "9c411891-d388-499b-9192-9ef07f79b7a0",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-eb604f35-4809-4f72-b8e2-e97762dc2d7b",
+      "externalUid": "eb604f35-4809-4f72-b8e2-e97762dc2d7b",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "Spvg. Rinsdorf II vs TSV Aue-Wingeshausen",
       "description": "Vorrunde",
@@ -738,8 +738,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-46aaa63f-aa08-45a7-9cf9-b37ba0945bda",
-      "externalUid": "46aaa63f-aa08-45a7-9cf9-b37ba0945bda",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-7d273906-d0ab-453e-a3bf-52255b7266a5",
+      "externalUid": "7d273906-d0ab-453e-a3bf-52255b7266a5",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "TSV Aue-Wingeshausen vs TSG Helberhausen",
       "description": "Vorrunde",
@@ -754,8 +754,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-4e51e99b-e1e0-4e62-9735-dd2824544b58",
-      "externalUid": "4e51e99b-e1e0-4e62-9735-dd2824544b58",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-b038145c-33cd-4bb8-98f0-201a2a4cc3b1",
+      "externalUid": "b038145c-33cd-4bb8-98f0-201a2a4cc3b1",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "TV Arfeld vs TSV Aue-Wingeshausen",
       "description": "Vorrunde",
@@ -770,8 +770,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-e6b45c57-ff72-4cb9-ba28-a8ea70403fdb",
-      "externalUid": "e6b45c57-ff72-4cb9-ba28-a8ea70403fdb",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-2208c5f5-5d89-41bf-ba33-51d6946955da",
+      "externalUid": "2208c5f5-5d89-41bf-ba33-51d6946955da",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "TSV Aue-Wingeshausen vs Eiserfelder TV",
       "description": "Vorrunde",
@@ -786,8 +786,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-0550e29a-31fc-4e14-a1ae-4bab3e05b095",
-      "externalUid": "0550e29a-31fc-4e14-a1ae-4bab3e05b095",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-0364d18f-c3b7-4d72-8bb6-8afa3abebe20",
+      "externalUid": "0364d18f-c3b7-4d72-8bb6-8afa3abebe20",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "TSV Aue-Wingeshausen vs SV Germania Salchendorf II",
       "description": "Rückrunde",
@@ -802,8 +802,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-7ebd4798-8cdd-4718-bb27-12c15df6014e",
-      "externalUid": "7ebd4798-8cdd-4718-bb27-12c15df6014e",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-cbea083b-8c86-452d-b752-428dd3e3d03d",
+      "externalUid": "cbea083b-8c86-452d-b752-428dd3e3d03d",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "SuS Niederschelden vs TSV Aue-Wingeshausen",
       "description": "Rückrunde",
@@ -818,8 +818,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-d29d2b8a-4104-4148-a6e1-e16d63af48b5",
-      "externalUid": "d29d2b8a-4104-4148-a6e1-e16d63af48b5",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-4b723854-cb1e-4a34-aec4-22c627b21e38",
+      "externalUid": "4b723854-cb1e-4a34-aec4-22c627b21e38",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "TuS Erndtebrück vs TSV Aue-Wingeshausen",
       "description": "Rückrunde",
@@ -834,8 +834,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-c72e12ee-015e-42ea-acf2-c089cc69d17c",
-      "externalUid": "c72e12ee-015e-42ea-acf2-c089cc69d17c",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-21ca2578-a542-4754-af24-b29091ad7b26",
+      "externalUid": "21ca2578-a542-4754-af24-b29091ad7b26",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "TSV Aue-Wingeshausen vs TuS Deuz",
       "description": "Rückrunde",
@@ -850,8 +850,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-ab16c1de-fbc4-4fd1-8f50-4aa1cd0a2ef1",
-      "externalUid": "ab16c1de-fbc4-4fd1-8f50-4aa1cd0a2ef1",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-1715bded-ecb8-4298-aae9-dc71a3e07616",
+      "externalUid": "1715bded-ecb8-4298-aae9-dc71a3e07616",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "TuS Johannland vs TSV Aue-Wingeshausen",
       "description": "Rückrunde",
@@ -866,8 +866,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-de3c2234-38c6-40d1-b7e6-782b4250dc4b",
-      "externalUid": "de3c2234-38c6-40d1-b7e6-782b4250dc4b",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-54ad138d-51ce-47ea-b43f-b9a9dc495561",
+      "externalUid": "54ad138d-51ce-47ea-b43f-b9a9dc495561",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "TSV Aue-Wingeshausen vs Spvg. Rinsdorf II",
       "description": "Rückrunde",
@@ -882,8 +882,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-5118a667-1518-4e01-aeaa-44e79cd7e431",
-      "externalUid": "5118a667-1518-4e01-aeaa-44e79cd7e431",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-6834d716-e12c-405f-9000-af99bf783d8f",
+      "externalUid": "6834d716-e12c-405f-9000-af99bf783d8f",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "TSG Helberhausen vs TSV Aue-Wingeshausen",
       "description": "Rückrunde",
@@ -898,8 +898,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-d5575445-7f75-4bcb-90c8-38f624644c24",
-      "externalUid": "d5575445-7f75-4bcb-90c8-38f624644c24",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-05905358-28dc-4151-8fde-5057fdcac4cc",
+      "externalUid": "05905358-28dc-4151-8fde-5057fdcac4cc",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "TSV Aue-Wingeshausen vs TV Arfeld",
       "description": "Rückrunde",
@@ -914,8 +914,8 @@
       "visibility": "public"
     },
     {
-      "id": "ext-mDk8XR4jYBzNXQLRMoNC-5d51c8d6-121b-48ae-b548-20aebbacbe14",
-      "externalUid": "5d51c8d6-121b-48ae-b548-20aebbacbe14",
+      "id": "ext-mDk8XR4jYBzNXQLRMoNC-2cdb7050-9e4c-41c7-b29d-a6c69afa0c83",
+      "externalUid": "2cdb7050-9e4c-41c7-b29d-a6c69afa0c83",
       "externalSourceId": "mDk8XR4jYBzNXQLRMoNC",
       "title": "Eiserfelder TV vs TSV Aue-Wingeshausen",
       "description": "Rückrunde",
@@ -938,7 +938,7 @@
       "ok": true,
       "stale": false,
       "count": 16,
-      "lastSuccessAt": "2026-10-01T15:02:29.772473+00:00"
+      "lastSuccessAt": "2026-10-01T18:03:14.120078+00:00"
     },
     {
       "id": "bPnIGG4pYHcyBVY3MVmO",
@@ -947,18 +947,16 @@
       "ok": true,
       "stale": false,
       "count": 6,
-      "lastSuccessAt": "2026-10-01T15:02:29.772473+00:00"
+      "lastSuccessAt": "2026-10-01T18:03:14.120078+00:00"
     },
     {
       "id": "hPUtii2eOk4rIqBqVRp0",
       "name": "2. Mannschaft",
       "calendarId": "KTVRUAwJOeEPjeZOxVE7",
-      "ok": false,
-      "stale": true,
+      "ok": true,
+      "stale": false,
       "count": 18,
-      "error": "ICS-Quelle 2. Mannschaft: HTTP 404. Abruf fehlgeschlagen.",
-      "code": 404,
-      "status": ""
+      "lastSuccessAt": "2026-10-01T18:03:14.120078+00:00"
     },
     {
       "id": "mDk8XR4jYBzNXQLRMoNC",
@@ -967,7 +965,7 @@
       "ok": true,
       "stale": false,
       "count": 18,
-      "lastSuccessAt": "2026-10-01T15:02:29.772473+00:00"
+      "lastSuccessAt": "2026-10-01T18:03:14.120078+00:00"
     }
   ]
 }
