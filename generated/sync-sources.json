@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-10-11T15:01:20.961942+00:00",
+  "savedAt": "2026-10-11T18:01:19.389134+00:00",
   "sources": [
     {
       "id": "Lwhn99SHIq7ia28DDaoi",
@@ -38,6 +38,16 @@
       "calendarId": "KTVRUAwJOeEPjeZOxVE7",
       "visibility": "public",
       "prefix": "",
+      "suffix": "",
+      "active": true
+    },
+    {
+      "id": "yCr0cAbSqXR87EW3ucjc",
+      "name": "4. Mannschaft",
+      "url": "webcal://www.mytischtennis.de/community/exportICSCalendar?teamIds=3148283",
+      "calendarId": "KTVRUAwJOeEPjeZOxVE7",
+      "visibility": "public",
+      "prefix": "E4",
       "suffix": "",
       "active": true
     }
