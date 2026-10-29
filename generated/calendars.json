@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T09:14:54.132247+00:00",
+  "generatedAt": "2026-10-29T17:38:00.959204+00:00",
   "state": "ok",
   "calendars": [
     {
@@ -7,43 +7,43 @@
       "name": "Ski",
       "path": "generated/calendars/6uidZ76YWkBkDeguOrvH.ics",
       "eventCount": 2,
-      "generatedAt": "2026-10-29T09:14:54.132247+00:00",
+      "generatedAt": "2026-10-29T17:38:00.959204+00:00",
       "state": "ok",
-      "sha256": "d6af27b85db10ada34b2c5c9b8d65c9d72b33df35e7ea79e501546d565e689e4"
+      "sha256": "b302751368350d58e8c391a19793de656d31fe9329c0be43ac0d5de416fe76db"
     },
     {
       "id": "7iTDwC2M99nxmS2uexqU",
       "name": "Zwischentrakt",
       "path": "generated/calendars/7iTDwC2M99nxmS2uexqU.ics",
       "eventCount": 315,
-      "generatedAt": "2026-10-29T09:14:54.132247+00:00",
+      "generatedAt": "2026-10-29T17:38:00.959204+00:00",
       "state": "ok",
-      "sha256": "3739195d121328fcb32142a6d640b0a800fe3b757c468fe8b4281c8dba906dff"
+      "sha256": "c2f39fb9f4e4e245ae24a72ab7b4a5a813e0f5d84599324e6f09ac325f8317b5"
     },
     {
       "id": "9RmE9TiYMdimdNHzSdwI",
       "name": "Vereinskalender",
       "path": "generated/calendars/9RmE9TiYMdimdNHzSdwI.ics",
       "eventCount": 19,
-      "generatedAt": "2026-10-29T09:14:54.132247+00:00",
+      "generatedAt": "2026-10-29T17:38:00.959204+00:00",
       "state": "ok",
-      "sha256": "417d20b1b9e3cdd266547d978f96d5412764f3b5a6939e68905b0db569aa456e"
+      "sha256": "38e1e89190bb6b6608899018cd80f0abc8b14781a79932d7895ed571ad8c1996"
     },
     {
       "id": "AMLdD7zPs0KdqTQ0Tmux",
       "name": "Turnhalle",
       "path": "generated/calendars/AMLdD7zPs0KdqTQ0Tmux.ics",
       "eventCount": 1787,
-      "generatedAt": "2026-10-29T09:14:54.132247+00:00",
+      "generatedAt": "2026-10-29T17:38:00.959204+00:00",
       "state": "ok",
-      "sha256": "8de329dd46bdce17f083775a0cabbaae98786efd181c281a1c53c825a80ff547"
+      "sha256": "f5adcfd8abcba568119bf5fe2be19684020929756ed0e4f95cef4f6db5cf1ded"
     },
     {
       "id": "KJCkgzR8gAOOPChLUTBs",
       "name": "Vorstand (Allgemein)",
       "path": "generated/calendars/KJCkgzR8gAOOPChLUTBs.ics",
       "eventCount": 0,
-      "generatedAt": "2026-10-29T09:14:54.132247+00:00",
+      "generatedAt": "2026-10-29T17:38:00.959204+00:00",
       "state": "ok",
       "sha256": "b808ceef3667449cf68b71bf34de145b0d75f844642c75a39a9558f1a998d9ad"
     },
@@ -52,16 +52,16 @@
       "name": "Tischtennis",
       "path": "generated/calendars/KTVRUAwJOeEPjeZOxVE7.ics",
       "eventCount": 74,
-      "generatedAt": "2026-10-29T09:14:54.132247+00:00",
+      "generatedAt": "2026-10-29T17:38:00.959204+00:00",
       "state": "ok",
-      "sha256": "53a4c4a7e4698e7f4d897e90c6c2b32cb1e4720ce453cbc14ab7d93995f841b5"
+      "sha256": "0299c6b971109db9a32dcfd791799959b207692d848a26c34ceb494b69e3b7be"
     },
     {
       "id": "Of3dcWv2sTjwaaxpF4Sr",
       "name": "Vorstand (Haupt)",
       "path": "generated/calendars/Of3dcWv2sTjwaaxpF4Sr.ics",
       "eventCount": 0,
-      "generatedAt": "2026-10-29T09:14:54.132247+00:00",
+      "generatedAt": "2026-10-29T17:38:00.959204+00:00",
       "state": "ok",
       "sha256": "4806f13baf8f1d70dc8c79a4453b11bf373e1942f47d65916b890566020f3826"
     },
@@ -70,7 +70,7 @@
       "name": "Leichtathletik",
       "path": "generated/calendars/OsozM2BUrskDAKkZ8FTM.ics",
       "eventCount": 0,
-      "generatedAt": "2026-10-29T09:14:54.132247+00:00",
+      "generatedAt": "2026-10-29T17:38:00.959204+00:00",
       "state": "ok",
       "sha256": "ea11d8de993d72fbe931b1d14740bc5746840d0d2381103b35e966cf2927736c"
     },
@@ -79,16 +79,16 @@
       "name": "Vereinsheim",
       "path": "generated/calendars/TeC8LK8ZTUczoNxrLkWj.ics",
       "eventCount": 235,
-      "generatedAt": "2026-10-29T09:14:54.132247+00:00",
+      "generatedAt": "2026-10-29T17:38:00.959204+00:00",
       "state": "ok",
-      "sha256": "5966e57ff695f40090882cfcca753a5a449331d96987509622fbf3c75c8754a7"
+      "sha256": "d1b40d3c58a5e383f3ae802cc8ab0afed815ff5195c77efd2d15b0f1759247c5"
     },
     {
       "id": "VYEzjdI6U3khooPHxZpv",
       "name": "Fußball",
       "path": "generated/calendars/VYEzjdI6U3khooPHxZpv.ics",
       "eventCount": 0,
-      "generatedAt": "2026-10-29T09:14:54.132247+00:00",
+      "generatedAt": "2026-10-29T17:38:00.959204+00:00",
       "state": "ok",
       "sha256": "27d228e7f9a79c566bdb68d93a36f00c9a7b753287cff9c6e5805696cc70380c"
     },
@@ -97,7 +97,7 @@
       "name": "Sportplatz",
       "path": "generated/calendars/izwulTwykngb8CPfVeg3.ics",
       "eventCount": 0,
-      "generatedAt": "2026-10-29T09:14:54.132247+00:00",
+      "generatedAt": "2026-10-29T17:38:00.959204+00:00",
       "state": "ok",
       "sha256": "0d91283a573628b0202c4502317ec274ec2cd42d01265ffc53f59e5e5baceecb"
     },
@@ -106,7 +106,7 @@
       "name": "Dart",
       "path": "generated/calendars/s37A1GFGjbQDapWWZNgm.ics",
       "eventCount": 0,
-      "generatedAt": "2026-10-29T09:14:54.132247+00:00",
+      "generatedAt": "2026-10-29T17:38:00.959204+00:00",
       "state": "ok",
       "sha256": "65951263761e503109c3fbbe860a9894ac834942db10e1316e2576ea6fb105b3"
     },
@@ -115,7 +115,7 @@
       "name": "Turnen",
       "path": "generated/calendars/xVrZnpNJ8c6X1FCjkJJ9.ics",
       "eventCount": 0,
-      "generatedAt": "2026-10-29T09:14:54.132247+00:00",
+      "generatedAt": "2026-10-29T17:38:00.959204+00:00",
       "state": "ok",
       "sha256": "fccc44ec9172bb4d30de478183828bb9d6882cdeb747c477e154b9e04705787f"
     }
