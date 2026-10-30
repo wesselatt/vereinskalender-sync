@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T17:16:35.311434+00:00",
+  "generatedAt": "2026-10-30T21:42:56.199347+00:00",
   "events": [
     {
       "id": "ext-Lwhn99SHIq7ia28DDaoi-1106a509-a9bd-4432-9b5c-8ad0b5cea2d0",
@@ -1194,45 +1194,53 @@
       "ok": false,
       "stale": true,
       "count": 16,
-      "error": "ICS-Quelle 3. & 4. Mannschaft: HTTP 404. Abruf fehlgeschlagen.",
-      "code": 404,
+      "error": "ICS-Quelle 3. & 4. Mannschaft: HTTP 429. Abrufkontingent oder Anfragerate begrenzt; Ursache nicht allein aus HTTP 429 bestimmbar.",
+      "code": 429,
       "status": ""
     },
     {
       "id": "bPnIGG4pYHcyBVY3MVmO",
       "name": "Jungen 15",
       "calendarId": "KTVRUAwJOeEPjeZOxVE7",
-      "ok": true,
-      "stale": false,
+      "ok": false,
+      "stale": true,
       "count": 6,
-      "lastSuccessAt": "2026-10-30T17:16:35.311434+00:00"
+      "error": "ICS-Quelle Jungen 15: HTTP 429. Abrufkontingent oder Anfragerate begrenzt; Ursache nicht allein aus HTTP 429 bestimmbar.",
+      "code": 429,
+      "status": ""
     },
     {
       "id": "hPUtii2eOk4rIqBqVRp0",
       "name": "2. Mannschaft",
       "calendarId": "KTVRUAwJOeEPjeZOxVE7",
-      "ok": true,
-      "stale": false,
+      "ok": false,
+      "stale": true,
       "count": 18,
-      "lastSuccessAt": "2026-10-30T17:16:35.311434+00:00"
+      "error": "ICS-Quelle 2. Mannschaft: HTTP 429. Abrufkontingent oder Anfragerate begrenzt; Ursache nicht allein aus HTTP 429 bestimmbar.",
+      "code": 429,
+      "status": ""
     },
     {
       "id": "mDk8XR4jYBzNXQLRMoNC",
       "name": "1. Mannschaft",
       "calendarId": "KTVRUAwJOeEPjeZOxVE7",
-      "ok": true,
-      "stale": false,
+      "ok": false,
+      "stale": true,
       "count": 18,
-      "lastSuccessAt": "2026-10-30T17:16:35.311434+00:00"
+      "error": "ICS-Quelle 1. Mannschaft: HTTP 429. Abrufkontingent oder Anfragerate begrenzt; Ursache nicht allein aus HTTP 429 bestimmbar.",
+      "code": 429,
+      "status": ""
     },
     {
       "id": "yCr0cAbSqXR87EW3ucjc",
       "name": "4. Mannschaft",
       "calendarId": "KTVRUAwJOeEPjeZOxVE7",
-      "ok": true,
-      "stale": false,
+      "ok": false,
+      "stale": true,
       "count": 16,
-      "lastSuccessAt": "2026-10-30T17:16:35.311434+00:00"
+      "error": "ICS-Quelle 4. Mannschaft: HTTP 429. Abrufkontingent oder Anfragerate begrenzt; Ursache nicht allein aus HTTP 429 bestimmbar.",
+      "code": 429,
+      "status": ""
     }
   ]
 }
