@@ -1,18 +1,183 @@
 {
   "version": "0.5.4",
-  "runId": "41161720961",
+  "runId": "41186738368",
   "runAttempt": "1",
-  "configurationStage": "calendar-permissions",
-  "generatedAt": "2026-10-31T02:49:55.363028+00:00",
+  "configurationStage": "complete",
+  "generatedAt": "2026-10-31T08:58:31.441792+00:00",
   "sourceConfigMode": "firebase",
-  "sources": [],
+  "sources": [
+    {
+      "id": "Lwhn99SHIq7ia28DDaoi",
+      "name": "3. & 4. Mannschaft",
+      "calendarId": "KTVRUAwJOeEPjeZOxVE7",
+      "ok": true,
+      "stale": false,
+      "count": 16,
+      "lastSuccessAt": "2026-10-31T08:58:31.441792+00:00"
+    },
+    {
+      "id": "bPnIGG4pYHcyBVY3MVmO",
+      "name": "Jungen 15",
+      "calendarId": "KTVRUAwJOeEPjeZOxVE7",
+      "ok": true,
+      "stale": false,
+      "count": 6,
+      "lastSuccessAt": "2026-10-31T08:58:31.441792+00:00"
+    },
+    {
+      "id": "hPUtii2eOk4rIqBqVRp0",
+      "name": "2. Mannschaft",
+      "calendarId": "KTVRUAwJOeEPjeZOxVE7",
+      "ok": true,
+      "stale": false,
+      "count": 18,
+      "lastSuccessAt": "2026-10-31T08:58:31.441792+00:00"
+    },
+    {
+      "id": "mDk8XR4jYBzNXQLRMoNC",
+      "name": "1. Mannschaft",
+      "calendarId": "KTVRUAwJOeEPjeZOxVE7",
+      "ok": true,
+      "stale": false,
+      "count": 18,
+      "lastSuccessAt": "2026-10-31T08:58:31.441792+00:00"
+    },
+    {
+      "id": "yCr0cAbSqXR87EW3ucjc",
+      "name": "4. Mannschaft",
+      "calendarId": "KTVRUAwJOeEPjeZOxVE7",
+      "ok": true,
+      "stale": false,
+      "count": 16,
+      "lastSuccessAt": "2026-10-31T08:58:31.441792+00:00"
+    }
+  ],
   "ics": {
-    "state": "error",
-    "calendars": []
+    "state": "ok",
+    "calendars": [
+      {
+        "id": "6uidZ76YWkBkDeguOrvH",
+        "name": "Ski",
+        "path": "generated/calendars/6uidZ76YWkBkDeguOrvH.ics",
+        "eventCount": 2,
+        "generatedAt": "2026-10-31T08:58:31.441792+00:00",
+        "state": "ok",
+        "sha256": "56c3bc1e794d24bc342e5389493edc1fc1d658256e726b796fe9c9e52cf385b3"
+      },
+      {
+        "id": "7iTDwC2M99nxmS2uexqU",
+        "name": "Zwischentrakt",
+        "path": "generated/calendars/7iTDwC2M99nxmS2uexqU.ics",
+        "eventCount": 315,
+        "generatedAt": "2026-10-31T08:58:31.441792+00:00",
+        "state": "ok",
+        "sha256": "ed313bae52bf7ecb13e55be3cbc53dbacb42163cbbe4affbe9cfb2e6e3c2a019"
+      },
+      {
+        "id": "9RmE9TiYMdimdNHzSdwI",
+        "name": "Vereinskalender",
+        "path": "generated/calendars/9RmE9TiYMdimdNHzSdwI.ics",
+        "eventCount": 19,
+        "generatedAt": "2026-10-31T08:58:31.441792+00:00",
+        "state": "ok",
+        "sha256": "fb992dac094f9e262c1522403339ec37c030eb375b3997dcc8888950b6d2cca6"
+      },
+      {
+        "id": "AMLdD7zPs0KdqTQ0Tmux",
+        "name": "Turnhalle",
+        "path": "generated/calendars/AMLdD7zPs0KdqTQ0Tmux.ics",
+        "eventCount": 1787,
+        "generatedAt": "2026-10-31T08:58:31.441792+00:00",
+        "state": "ok",
+        "sha256": "7374ce82d68adae70e182c66e8a7256718b5079491ce4cf6cba2e1bd6276bf3c"
+      },
+      {
+        "id": "KJCkgzR8gAOOPChLUTBs",
+        "name": "Vorstand (Allgemein)",
+        "path": "generated/calendars/KJCkgzR8gAOOPChLUTBs.ics",
+        "eventCount": 0,
+        "generatedAt": "2026-10-31T08:58:31.441792+00:00",
+        "state": "ok",
+        "sha256": "b808ceef3667449cf68b71bf34de145b0d75f844642c75a39a9558f1a998d9ad"
+      },
+      {
+        "id": "KTVRUAwJOeEPjeZOxVE7",
+        "name": "Tischtennis",
+        "path": "generated/calendars/KTVRUAwJOeEPjeZOxVE7.ics",
+        "eventCount": 74,
+        "generatedAt": "2026-10-31T08:58:31.441792+00:00",
+        "state": "ok",
+        "sha256": "1518952c023d30fdc1620710e90d6b30df10a456a97f93f1077cde02a218e77c"
+      },
+      {
+        "id": "Of3dcWv2sTjwaaxpF4Sr",
+        "name": "Vorstand (Haupt)",
+        "path": "generated/calendars/Of3dcWv2sTjwaaxpF4Sr.ics",
+        "eventCount": 0,
+        "generatedAt": "2026-10-31T08:58:31.441792+00:00",
+        "state": "ok",
+        "sha256": "4806f13baf8f1d70dc8c79a4453b11bf373e1942f47d65916b890566020f3826"
+      },
+      {
+        "id": "OsozM2BUrskDAKkZ8FTM",
+        "name": "Leichtathletik",
+        "path": "generated/calendars/OsozM2BUrskDAKkZ8FTM.ics",
+        "eventCount": 0,
+        "generatedAt": "2026-10-31T08:58:31.441792+00:00",
+        "state": "ok",
+        "sha256": "ea11d8de993d72fbe931b1d14740bc5746840d0d2381103b35e966cf2927736c"
+      },
+      {
+        "id": "TeC8LK8ZTUczoNxrLkWj",
+        "name": "Vereinsheim",
+        "path": "generated/calendars/TeC8LK8ZTUczoNxrLkWj.ics",
+        "eventCount": 235,
+        "generatedAt": "2026-10-31T08:58:31.441792+00:00",
+        "state": "ok",
+        "sha256": "c9254e56f4631b32957c0395ff905536ab5190fdb4786b85e8f5db1d7d2eb8c7"
+      },
+      {
+        "id": "VYEzjdI6U3khooPHxZpv",
+        "name": "Fußball",
+        "path": "generated/calendars/VYEzjdI6U3khooPHxZpv.ics",
+        "eventCount": 0,
+        "generatedAt": "2026-10-31T08:58:31.441792+00:00",
+        "state": "ok",
+        "sha256": "27d228e7f9a79c566bdb68d93a36f00c9a7b753287cff9c6e5805696cc70380c"
+      },
+      {
+        "id": "izwulTwykngb8CPfVeg3",
+        "name": "Sportplatz",
+        "path": "generated/calendars/izwulTwykngb8CPfVeg3.ics",
+        "eventCount": 0,
+        "generatedAt": "2026-10-31T08:58:31.441792+00:00",
+        "state": "ok",
+        "sha256": "0d91283a573628b0202c4502317ec274ec2cd42d01265ffc53f59e5e5baceecb"
+      },
+      {
+        "id": "s37A1GFGjbQDapWWZNgm",
+        "name": "Dart",
+        "path": "generated/calendars/s37A1GFGjbQDapWWZNgm.ics",
+        "eventCount": 0,
+        "generatedAt": "2026-10-31T08:58:31.441792+00:00",
+        "state": "ok",
+        "sha256": "65951263761e503109c3fbbe860a9894ac834942db10e1316e2576ea6fb105b3"
+      },
+      {
+        "id": "xVrZnpNJ8c6X1FCjkJJ9",
+        "name": "Turnen",
+        "path": "generated/calendars/xVrZnpNJ8c6X1FCjkJJ9.ics",
+        "eventCount": 0,
+        "generatedAt": "2026-10-31T08:58:31.441792+00:00",
+        "state": "ok",
+        "sha256": "fccc44ec9172bb4d30de478183828bb9d6882cdeb747c477e154b9e04705787f"
+      }
+    ],
+    "errors": [],
+    "revokedFilesRemoved": 0
   },
-  "overall": "error",
-  "configurationError": "Firebase veröffentlichte calendars: HTTP 429 – RESOURCE_EXHAUSTED. Abrufkontingent oder Anfragerate begrenzt; Ursache nicht allein aus HTTP 429 bestimmbar.",
-  "configurationCode": 429,
-  "configurationStatus": "RESOURCE_EXHAUSTED",
-  "dataUnchanged": true
+  "sourceCount": 5,
+  "excludedNonPublicSources": 0,
+  "eventCount": 74,
+  "overall": "ok"
 }
