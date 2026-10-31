@@ -1,112 +1,102 @@
 {
   "version": "0.5.4",
-  "runId": "41232131148",
+  "runId": "41254077022",
   "runAttempt": "1",
   "configurationStage": "complete",
-  "generatedAt": "2026-10-31T19:00:43.151460+00:00",
+  "generatedAt": "2026-10-31T23:48:59.902354+00:00",
   "sourceConfigMode": "firebase",
   "sources": [
     {
       "id": "Lwhn99SHIq7ia28DDaoi",
       "name": "3. & 4. Mannschaft",
       "calendarId": "KTVRUAwJOeEPjeZOxVE7",
-      "ok": false,
-      "stale": true,
+      "ok": true,
+      "stale": false,
       "count": 16,
-      "error": "ICS-Quelle 3. & 4. Mannschaft: HTTP 429. Abrufkontingent oder Anfragerate begrenzt; Ursache nicht allein aus HTTP 429 bestimmbar.",
-      "code": 429,
-      "status": ""
+      "lastSuccessAt": "2026-10-31T23:48:59.902354+00:00"
     },
     {
       "id": "bPnIGG4pYHcyBVY3MVmO",
       "name": "Jungen 15",
       "calendarId": "KTVRUAwJOeEPjeZOxVE7",
-      "ok": false,
-      "stale": true,
+      "ok": true,
+      "stale": false,
       "count": 6,
-      "error": "ICS-Quelle Jungen 15: HTTP 429. Abrufkontingent oder Anfragerate begrenzt; Ursache nicht allein aus HTTP 429 bestimmbar.",
-      "code": 429,
-      "status": ""
+      "lastSuccessAt": "2026-10-31T23:48:59.902354+00:00"
     },
     {
       "id": "hPUtii2eOk4rIqBqVRp0",
       "name": "2. Mannschaft",
       "calendarId": "KTVRUAwJOeEPjeZOxVE7",
-      "ok": false,
-      "stale": true,
+      "ok": true,
+      "stale": false,
       "count": 18,
-      "error": "ICS-Quelle 2. Mannschaft: HTTP 429. Abrufkontingent oder Anfragerate begrenzt; Ursache nicht allein aus HTTP 429 bestimmbar.",
-      "code": 429,
-      "status": ""
+      "lastSuccessAt": "2026-10-31T23:48:59.902354+00:00"
     },
     {
       "id": "mDk8XR4jYBzNXQLRMoNC",
       "name": "1. Mannschaft",
       "calendarId": "KTVRUAwJOeEPjeZOxVE7",
-      "ok": false,
-      "stale": true,
+      "ok": true,
+      "stale": false,
       "count": 18,
-      "error": "ICS-Quelle 1. Mannschaft: HTTP 429. Abrufkontingent oder Anfragerate begrenzt; Ursache nicht allein aus HTTP 429 bestimmbar.",
-      "code": 429,
-      "status": ""
+      "lastSuccessAt": "2026-10-31T23:48:59.902354+00:00"
     },
     {
       "id": "yCr0cAbSqXR87EW3ucjc",
       "name": "4. Mannschaft",
       "calendarId": "KTVRUAwJOeEPjeZOxVE7",
-      "ok": false,
-      "stale": true,
+      "ok": true,
+      "stale": false,
       "count": 16,
-      "error": "ICS-Quelle 4. Mannschaft: HTTP 429. Abrufkontingent oder Anfragerate begrenzt; Ursache nicht allein aus HTTP 429 bestimmbar.",
-      "code": 429,
-      "status": ""
+      "lastSuccessAt": "2026-10-31T23:48:59.902354+00:00"
     }
   ],
   "ics": {
-    "state": "stale",
+    "state": "ok",
     "calendars": [
       {
         "id": "6uidZ76YWkBkDeguOrvH",
         "name": "Ski",
         "path": "generated/calendars/6uidZ76YWkBkDeguOrvH.ics",
         "eventCount": 2,
-        "generatedAt": "2026-10-31T19:00:43.151460+00:00",
+        "generatedAt": "2026-10-31T23:48:59.902354+00:00",
         "state": "ok",
-        "sha256": "606a7c5cd3cdb692eb40a21fd6f0deb5acc3e2db22c86a6599d72a989ab6d3b1"
+        "sha256": "b10813ab02a7fe90106679c594f08236994547fcac4e1cfa5bc40bd5d3614b2d"
       },
       {
         "id": "7iTDwC2M99nxmS2uexqU",
         "name": "Zwischentrakt",
         "path": "generated/calendars/7iTDwC2M99nxmS2uexqU.ics",
         "eventCount": 315,
-        "generatedAt": "2026-10-31T19:00:43.151460+00:00",
+        "generatedAt": "2026-10-31T23:48:59.902354+00:00",
         "state": "ok",
-        "sha256": "0343495ffc9c53aeaeedfbf88e3ba88b43ecdfaf0abe86ac356e7d6c4332798d"
+        "sha256": "cdb4b9d22e1bc20d3a280707c0f47cbe5a48983598fce9ed9981fbd2fa28c456"
       },
       {
         "id": "9RmE9TiYMdimdNHzSdwI",
         "name": "Vereinskalender",
         "path": "generated/calendars/9RmE9TiYMdimdNHzSdwI.ics",
         "eventCount": 19,
-        "generatedAt": "2026-10-31T19:00:43.151460+00:00",
+        "generatedAt": "2026-10-31T23:48:59.902354+00:00",
         "state": "ok",
-        "sha256": "ecf97a4fd06f6df37923e1d8f95bd090530ce3b67d27f1a938c4e66e0d9e2f24"
+        "sha256": "4cb6f5d207f2bd6381045f38fdca0f310b2e17da40d667af0f919a043ea1be64"
       },
       {
         "id": "AMLdD7zPs0KdqTQ0Tmux",
         "name": "Turnhalle",
         "path": "generated/calendars/AMLdD7zPs0KdqTQ0Tmux.ics",
         "eventCount": 1787,
-        "generatedAt": "2026-10-31T19:00:43.151460+00:00",
+        "generatedAt": "2026-10-31T23:48:59.902354+00:00",
         "state": "ok",
-        "sha256": "d2c5d616f0556e3efbde5a23226ba76c3a956ebff2bf601a903b437d852f8696"
+        "sha256": "dc27004b17bdec6fca7167e18a2f9ca74bf140e89ae0bcb179bcaaaaf533fe8e"
       },
       {
         "id": "KJCkgzR8gAOOPChLUTBs",
         "name": "Vorstand (Allgemein)",
         "path": "generated/calendars/KJCkgzR8gAOOPChLUTBs.ics",
         "eventCount": 0,
-        "generatedAt": "2026-10-31T19:00:43.151460+00:00",
+        "generatedAt": "2026-10-31T23:48:59.902354+00:00",
         "state": "ok",
         "sha256": "b808ceef3667449cf68b71bf34de145b0d75f844642c75a39a9558f1a998d9ad"
       },
@@ -115,16 +105,16 @@
         "name": "Tischtennis",
         "path": "generated/calendars/KTVRUAwJOeEPjeZOxVE7.ics",
         "eventCount": 74,
-        "generatedAt": "2026-10-31T19:00:43.151460+00:00",
-        "state": "stale",
-        "sha256": "a37570fc8f0d0d065f70eeec65e6a3d342ff2841a1d571d4b7163879321d4883"
+        "generatedAt": "2026-10-31T23:48:59.902354+00:00",
+        "state": "ok",
+        "sha256": "66901b3fdd0133855035f8fb73c474c01c55791f367c5f05610477fedbabc5a1"
       },
       {
         "id": "Of3dcWv2sTjwaaxpF4Sr",
         "name": "Vorstand (Haupt)",
         "path": "generated/calendars/Of3dcWv2sTjwaaxpF4Sr.ics",
         "eventCount": 0,
-        "generatedAt": "2026-10-31T19:00:43.151460+00:00",
+        "generatedAt": "2026-10-31T23:48:59.902354+00:00",
         "state": "ok",
         "sha256": "4806f13baf8f1d70dc8c79a4453b11bf373e1942f47d65916b890566020f3826"
       },
@@ -133,7 +123,7 @@
         "name": "Leichtathletik",
         "path": "generated/calendars/OsozM2BUrskDAKkZ8FTM.ics",
         "eventCount": 0,
-        "generatedAt": "2026-10-31T19:00:43.151460+00:00",
+        "generatedAt": "2026-10-31T23:48:59.902354+00:00",
         "state": "ok",
         "sha256": "ea11d8de993d72fbe931b1d14740bc5746840d0d2381103b35e966cf2927736c"
       },
@@ -142,16 +132,16 @@
         "name": "Vereinsheim",
         "path": "generated/calendars/TeC8LK8ZTUczoNxrLkWj.ics",
         "eventCount": 235,
-        "generatedAt": "2026-10-31T19:00:43.151460+00:00",
+        "generatedAt": "2026-10-31T23:48:59.902354+00:00",
         "state": "ok",
-        "sha256": "d412be487603471be48de7c7c7c8b46b915315c538689b565e23a31b8913d71d"
+        "sha256": "c1f37475330474db1d3db9b928de2c27e39a027a912c41a603adb4dfbb73cc15"
       },
       {
         "id": "VYEzjdI6U3khooPHxZpv",
         "name": "Fußball",
         "path": "generated/calendars/VYEzjdI6U3khooPHxZpv.ics",
         "eventCount": 0,
-        "generatedAt": "2026-10-31T19:00:43.151460+00:00",
+        "generatedAt": "2026-10-31T23:48:59.902354+00:00",
         "state": "ok",
         "sha256": "27d228e7f9a79c566bdb68d93a36f00c9a7b753287cff9c6e5805696cc70380c"
       },
@@ -160,7 +150,7 @@
         "name": "Sportplatz",
         "path": "generated/calendars/izwulTwykngb8CPfVeg3.ics",
         "eventCount": 0,
-        "generatedAt": "2026-10-31T19:00:43.151460+00:00",
+        "generatedAt": "2026-10-31T23:48:59.902354+00:00",
         "state": "ok",
         "sha256": "0d91283a573628b0202c4502317ec274ec2cd42d01265ffc53f59e5e5baceecb"
       },
@@ -169,7 +159,7 @@
         "name": "Dart",
         "path": "generated/calendars/s37A1GFGjbQDapWWZNgm.ics",
         "eventCount": 0,
-        "generatedAt": "2026-10-31T19:00:43.151460+00:00",
+        "generatedAt": "2026-10-31T23:48:59.902354+00:00",
         "state": "ok",
         "sha256": "65951263761e503109c3fbbe860a9894ac834942db10e1316e2576ea6fb105b3"
       },
@@ -178,7 +168,7 @@
         "name": "Turnen",
         "path": "generated/calendars/xVrZnpNJ8c6X1FCjkJJ9.ics",
         "eventCount": 0,
-        "generatedAt": "2026-10-31T19:00:43.151460+00:00",
+        "generatedAt": "2026-10-31T23:48:59.902354+00:00",
         "state": "ok",
         "sha256": "fccc44ec9172bb4d30de478183828bb9d6882cdeb747c477e154b9e04705787f"
       }
@@ -189,5 +179,5 @@
   "sourceCount": 5,
   "excludedNonPublicSources": 0,
   "eventCount": 74,
-  "overall": "partial"
+  "overall": "ok"
 }
