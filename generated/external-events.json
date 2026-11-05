@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T18:54:40.846803+00:00",
+  "generatedAt": "2026-11-05T01:06:55.636734+00:00",
   "events": [
     {
       "id": "ext-Lwhn99SHIq7ia28DDaoi-8ad82b91-d5ae-4c96-894c-e68cb6be786f",
@@ -1191,10 +1191,12 @@
       "id": "Lwhn99SHIq7ia28DDaoi",
       "name": "3. & 4. Mannschaft",
       "calendarId": "KTVRUAwJOeEPjeZOxVE7",
-      "ok": true,
-      "stale": false,
+      "ok": false,
+      "stale": true,
       "count": 16,
-      "lastSuccessAt": "2026-11-04T18:54:40.846803+00:00"
+      "error": "ICS-Quelle 3. & 4. Mannschaft: HTTP 429. Abrufkontingent oder Anfragerate begrenzt; Ursache nicht allein aus HTTP 429 bestimmbar.",
+      "code": 429,
+      "status": ""
     },
     {
       "id": "bPnIGG4pYHcyBVY3MVmO",
@@ -1222,19 +1224,23 @@
       "id": "mDk8XR4jYBzNXQLRMoNC",
       "name": "1. Mannschaft",
       "calendarId": "KTVRUAwJOeEPjeZOxVE7",
-      "ok": true,
-      "stale": false,
+      "ok": false,
+      "stale": true,
       "count": 18,
-      "lastSuccessAt": "2026-11-04T18:54:40.846803+00:00"
+      "error": "ICS-Quelle 1. Mannschaft: HTTP 429. Abrufkontingent oder Anfragerate begrenzt; Ursache nicht allein aus HTTP 429 bestimmbar.",
+      "code": 429,
+      "status": ""
     },
     {
       "id": "yCr0cAbSqXR87EW3ucjc",
       "name": "4. Mannschaft",
       "calendarId": "KTVRUAwJOeEPjeZOxVE7",
-      "ok": true,
-      "stale": false,
+      "ok": false,
+      "stale": true,
       "count": 16,
-      "lastSuccessAt": "2026-11-04T18:54:40.846803+00:00"
+      "error": "ICS-Quelle 4. Mannschaft: HTTP 429. Abrufkontingent oder Anfragerate begrenzt; Ursache nicht allein aus HTTP 429 bestimmbar.",
+      "code": 429,
+      "status": ""
     }
   ]
 }
